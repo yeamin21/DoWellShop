@@ -1,0 +1,14 @@
+{% for product in products %}
+    <div class="single-post first">
+        <div class="image">
+            {% if product.image %}
+                <img src="{{ product.image.url }}">
+            {% endif %}
+        </div>
+        <div class="content">
+            <h5><a href={% url 'products:description' product.pk %}>{{ product.name }}</a></h5>
+            <p class="price">{{ product.price }}</p>
+            <p class="sub-category"> {{ product.category }}</p>
+        </div>
+    </div>
+{% endfor %}
