@@ -12,14 +12,16 @@
 
                         <table id="checkout-table" class="table shopping-summery text-center">
                             <h3 style="padding: 0px 0px 10px 0">Order Summary</h3>
-                            {#                            <thead>#}
-                            {#                            <tr class="main-hading">#}
-                            {#                                <th class="text-center">Product</th>#}
-                            {#                                <th class="text-center">UNIT PRICE</th>#}
-                            {#                                <th class="text-center">QUANTITY</th>#}
-                            {#                                <th class="text-center">TOTAL</th>#}
-                            {#                            </tr>#}
-                            {#                            </thead>#}
+                            <thead>
+                                                   <tr class="main-hading">
+                                                         <th class="text-center">Product</th>
+                                                        <th class="text-center">UNIT PRICE</th>
+                                                         <th class="text-center">QUANTITY</th>
+                                                         <th class="text-center">TOTAL</th>
+                                                       </tr>
+                                                </thead>
+                                                <tbody id='checkout-body'>
+                                                </tbody>
                         </table>
 
 
@@ -181,27 +183,5 @@
     <!--/ End Checkout -->
 
 
-    {#    <script type="text/javascript">#}
-    {#        let checkouttable = document.getElementById('order-items');#}
-    {##}
-    {#        function items() {#}
-    {#            var cartItems = localStorage.getItem('productInCart')#}
-    {#            cartItems = JSON.parse(cartItems);#}
-    {#            for (const item in cartItems) {#}
-    {#                checkouttable.innerHTML += `<tr>#}
-    {##}
-    {#    <td class='product-des' data-title='Description'>#}
-    {#    <p class='product-name' >#}
-    {#    <input type="hidden" name="product" value=${cartItems[item].productId}>#}
-    {#    <a href='#'>${cartItems[item].productName}</a>#}
-    {#    </p></td>#}
-    {#    <td class='text-center' data-title='Price'><span class='product-unitprice'>${cartItems[item].unitprice}</span></td>#}
-    {#    <td class='text-center'><input type="hidden" name="quantity" value=${cartItems[item].quantity}>${cartItems[item].quantity}</td>#}
-    {#    <td class='text-center total-price'>${parseFloat(cartItems[item].quantity * parseFloat(cartItems[item].unitprice)).toFixed(2)}</td></tr>`#}
-    {#            }#}
-    {#        }#}
-    {##}
-    {#        items()#}
-    {#    </script>#}
     <!-- End Shop Services -->
 {% endblock %}

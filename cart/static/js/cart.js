@@ -55,48 +55,35 @@ function totalItemCount() {
 }
 
 $(document).ready(function () {
-    $("#checkout-table").html('<thead>\n' +
-        '                            <tr class="main-hading">\n' +
-        '                                <th>Product</th>\n' +
-        '                                <th>UNIT PRICE</th>\n' +
-        '                                <th>QUANTITY</th>\n' +
-        '                                <th>TOTAL</th>\n' +
-        '                            </tr>\n' +
-        '                            </thead>')
+
     cartItems = localStorage.getItem('productInCart')
     cartItems = JSON.parse(cartItems);
 
     for (const item in cartItems) {
-        $('#checkout-table').append("<tr><td class='product-des' data-title='Description'><p class='product-name'><a>" + cartItems[item].productName + "</a></td>" +
-            "<td data-title='Price'><span class='product-unitprice'>" + cartItems[item].unitprice + "</span></td>\n" +
-            "<td>" + cartItems[item].quantity + "</td>" +
-            "<td class='total-price'>" + parseFloat(cartItems[item].quantity * parseFloat(cartItems[item].unitprice)).toFixed(2) + "</td></tr>")
+        $("#checkout-body").append(`<tr><td class='product-des' data-title='Description'><p class='product-name'><a>${cartItems[item].productName}</a></td>
+            <td data-title='Price'><span class='product-unitprice'>${cartItems[item].unitprice}</span></td>
+            <td>${cartItems[item].quantity}</td>
+            <td class='total-price'>${(parseFloat(cartItems[item].quantity) * parseFloat(cartItems[item].unitprice)).toFixed(2)}</td></tr>`)
     }
 
 
 })
 
+
+
 //cart item to table
 function load_cartItems() {
-    $('#cart-table').html('<thead>\n' +
-        '<tr class="main-hading">\n' +
-        '<th>NAME</th>\n' +
-        '<th>UNIT PRICE</th>\n' +
-        '<th>QUANTITY</th>\n' +
-        '<th>TOTAL</th>\n' +
-        '<th >Remove</th>\n' +
-        '</tr>\n' +
-        '</thead>')
+    $('#cart-body').html('')
     cartItems = JSON.parse(localStorage.getItem('productInCart'));
-
+    console.log(cartItems)
     for (const item in cartItems) {
-        $('#cart-table').append(`<tr>
-<td class='product-des'><p class='product-name'><a href='#'>${cartItems[item].productName}</a></p></td>
-<td data-title='Price'><span class='product-unitprice'>${cartItems[item].unitprice}</span></td>
-<td><input class='product-quantity text-center'  data-productid=${cartItems[item].productId} type='number' value='${cartItems[item].quantity}' min='1'></td>
-<td class='total-price'>${(parseFloat(cartItems[item].quantity) * parseFloat(cartItems[item].unitprice)).toFixed(2)}</td>
-<td class='action'><a class="remove" onclick="remove(${cartItems[item].productId})"><i class='ti-trash remove-icon'></i></a></td>
-</tr>`)
+        $('#cart-body').append(`<tr>
+            <td class='product-des'><p class='product-name'><a href='#'>${cartItems[item].productName}</a></p></td>
+            <td data-title='Price'><span class='product-unitprice'>${cartItems[item].unitprice}</span></td>
+            <td><input class='product-quantity'  data-productid=${cartItems[item].productId} type='number' value='${cartItems[item].quantity}' min='1'></td>
+            <td class='total-price'>${(parseFloat(cartItems[item].quantity) * parseFloat(cartItems[item].unitprice)).toFixed(2)}</td>
+            <td class='action'><a class="remove" onclick="remove(${cartItems[item].productId})"><i class='ti-trash remove-icon'></i></a></td>
+            </tr>`)
     }
     allTotal();
     totalItemCount();
@@ -124,9 +111,6 @@ function allTotal() {
     localStorage.setItem('subtotal', total);
     subtotal.textContent = total;
 }
-
-//TODO: add remove from cart
-//function remove_from_cart():
 
 //fetch api to send post request: addOrder
 
@@ -252,11 +236,3 @@ if (window.location.pathname == '/cart/') {
     quantityListener();
 
 }
-// if(window.location.pathname=='/cart/checkout/')
-//
-// {
-//
-//    checkOut();
-//    // checkout()
-// // }
-
