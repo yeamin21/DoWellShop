@@ -43,12 +43,9 @@ class Order(models.Model):
         totalAmount = sum(i.total_price for i in orderItems)
         return totalAmount
 
-    @property
-    def orderStatus(self):
-        if self.is_ordered:
-            return 'Ordered'
-        elif self.is_canceled:
-            return 'Canceled'
+    def status(self):
+        if self.is_ordered and not self.is_canceled: return 'Ordered'
+        elif self.is_ordered and self.is_canceled: return 'Canceled'
 
     def __str__(self):
         return str(self.id)

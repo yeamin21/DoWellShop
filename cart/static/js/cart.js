@@ -57,20 +57,20 @@ function totalItemCount() {
 $(document).ready(function () {
     $("#checkout-table").html('<thead>\n' +
         '                            <tr class="main-hading">\n' +
-        '                                <th class="text-center">Product</th>\n' +
-        '                                <th class="text-center">UNIT PRICE</th>\n' +
-        '                                <th class="text-center">QUANTITY</th>\n' +
-        '                                <th class="text-center">TOTAL</th>\n' +
+        '                                <th>Product</th>\n' +
+        '                                <th>UNIT PRICE</th>\n' +
+        '                                <th>QUANTITY</th>\n' +
+        '                                <th>TOTAL</th>\n' +
         '                            </tr>\n' +
         '                            </thead>')
     cartItems = localStorage.getItem('productInCart')
     cartItems = JSON.parse(cartItems);
 
     for (const item in cartItems) {
-        $('#checkout-table').append("<tr><td class='product-des text-center' data-title='Description'><p class='product-name'><a>" + cartItems[item].productName + "</a></td>" +
-            "<td class='text-center' data-title='Price'><span class='product-unitprice'>" + cartItems[item].unitprice + "</span></td>\n" +
-            "<td class='text-center'>" + cartItems[item].quantity + "</td>" +
-            "<td class='text-center total-price'>" + parseFloat(cartItems[item].quantity * parseFloat(cartItems[item].unitprice)).toFixed(2) + "</td></tr>")
+        $('#checkout-table').append("<tr><td class='product-des' data-title='Description'><p class='product-name'><a>" + cartItems[item].productName + "</a></td>" +
+            "<td data-title='Price'><span class='product-unitprice'>" + cartItems[item].unitprice + "</span></td>\n" +
+            "<td>" + cartItems[item].quantity + "</td>" +
+            "<td class='total-price'>" + parseFloat(cartItems[item].quantity * parseFloat(cartItems[item].unitprice)).toFixed(2) + "</td></tr>")
     }
 
 
@@ -81,10 +81,10 @@ function load_cartItems() {
     $('#cart-table').html('<thead>\n' +
         '<tr class="main-hading">\n' +
         '<th>NAME</th>\n' +
-        '<th class="text-center">UNIT PRICE</th>\n' +
-        '<th class="text-center">QUANTITY</th>\n' +
-        '<th class="text-center">TOTAL</th>\n' +
-        '<th class="text-center">Remove</th>\n' +
+        '<th>UNIT PRICE</th>\n' +
+        '<th>QUANTITY</th>\n' +
+        '<th>TOTAL</th>\n' +
+        '<th >Remove</th>\n' +
         '</tr>\n' +
         '</thead>')
     cartItems = JSON.parse(localStorage.getItem('productInCart'));
@@ -92,10 +92,10 @@ function load_cartItems() {
     for (const item in cartItems) {
         $('#cart-table').append(`<tr>
 <td class='product-des'><p class='product-name'><a href='#'>${cartItems[item].productName}</a></p></td>
-<td class='text-center' data-title='Price'><span class='product-unitprice'>${cartItems[item].unitprice}</span></td>
-<td class='text-center'><input class='product-quantity text-center'  data-productid=${cartItems[item].productId} type='number' value='${cartItems[item].quantity}' min='1'></td>
-<td class='text-center total-price'>${(parseFloat(cartItems[item].quantity) * parseFloat(cartItems[item].unitprice)).toFixed(2)}</td>
-<td class='action text-center'><a class="remove" onclick="remove(${cartItems[item].productId})"><i class='ti-trash remove-icon'></i></a></td>
+<td data-title='Price'><span class='product-unitprice'>${cartItems[item].unitprice}</span></td>
+<td><input class='product-quantity text-center'  data-productid=${cartItems[item].productId} type='number' value='${cartItems[item].quantity}' min='1'></td>
+<td class='total-price'>${(parseFloat(cartItems[item].quantity) * parseFloat(cartItems[item].unitprice)).toFixed(2)}</td>
+<td class='action'><a class="remove" onclick="remove(${cartItems[item].productId})"><i class='ti-trash remove-icon'></i></a></td>
 </tr>`)
     }
     allTotal();

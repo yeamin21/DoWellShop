@@ -1,6 +1,8 @@
 import json
 
 from django.contrib.auth.decorators import login_required
+from django.forms import fields
+from django.forms.models import fields_for_model
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
@@ -84,4 +86,10 @@ class OrderDetails(generic.DetailView):
     model = Order
     template_name = 'cart/orderDetails.html'
     context_object_name = 'order'
+    
 
+def cancel_order(request,pk):
+    order = Order.objects.get(user=request.user,pk=pk)
+    order.is_canceled = True
+    order.save()
+    return redirect('users:user_panel')

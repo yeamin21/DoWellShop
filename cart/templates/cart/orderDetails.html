@@ -12,7 +12,7 @@
         <form method="post">
           {% csrf_token %}
           <div class="container">
-            <input type="hidden" /><a href="{% url 'cart:cancel_order' %}">
+            <input type="hidden" /><a href="{% url 'cart:cancel_order' order %}">
                 <i
                 class="fa fa-ban"
                 style="color: rgb(167, 50, 50)"
