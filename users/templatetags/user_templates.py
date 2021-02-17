@@ -7,9 +7,9 @@ from users.models import Address
 register = temp.Library()
 
 
-@register.inclusion_tag('users/dummy_template.html')
-def addresses(user, template='users/block_address_list.html'):
-    return {'addresses': Address.objects.filter(user=user), 'template': template}
+@register.inclusion_tag('users/block_address_list_radio.html')
+def addresses(user):
+    return {'addresses': Address.objects.filter(user=user)}
 
 
 @register.inclusion_tag('users/block_address_add.html')

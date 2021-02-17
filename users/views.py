@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import generic
@@ -84,7 +85,9 @@ class AddAddress(generic.CreateView):
         address = form.save(commit=False)
         address.user = self.request.user
         address.save()
-        return HttpResponseRedirect(self.request.path_info)
+        next = self.request.META.get('HTTP_REFERER', None) or '/'
+        return HttpResponseRedirect(next)
+
 
 
 class AddressUpdateView(generic.UpdateView):

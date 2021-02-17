@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
 {% load static %}
-{% load product_templatetags %}
 <head>
     <!-- Meta Tag -->
     <meta charset="utf-8">
@@ -199,7 +198,9 @@
                             <div class="search-bar">
                                 <select>
                                     <option selected="selected">All Category</option>
-                                    {% categories template='products/category_list_options.html' %}
+                                    {% for category in categories %}
+                                    <option>{{ category }}</option>
+                                    {% endfor %}
                                 </select>
                                 <form>
                                     <input name="search" placeholder="Search Products Here....." type="search">

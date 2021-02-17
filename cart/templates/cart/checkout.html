@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 {% load user_templates %}
 {% block checkout %}
-
+ {% add_address %}
     <!-- Start Checkout -->
     <section class="shop checkout section">
         <div class="container">
@@ -49,9 +49,11 @@
                                 <h2>Delivery Address</h2>
                                 <div class="content">
                                     <div class="checkbox">
-                                        {% addresses request.user template="users/block_address_list_radio.html" %}
+                                        {% addresses request.user %}
                                     </div>
+                                    
                                 </div>
+                                 <a id="addmo">Add Address</a>
                             </div>
 
                             <div class="single-widget">
@@ -176,12 +178,25 @@
             </div>
         </div>
     </section>
-    {% for address in addresses %}
-        {{ address }}
-    {% endfor %}
-
     <!--/ End Checkout -->
 
+    <script>
+        var m = document.getElementById('addAddressModal');
+        var b = document.getElementById('addmo')
+        var closeButton = document.getElementById('modal-close')
+        b.addEventListener('click', function () {
+            m.classList.add('show')
+            m.style.display = 'block';
 
+        })
+        closeButton.onclick = function () {
+            m.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == m) {
+                m.style.display = "none";
+            }
+        }
+    </script>
     <!-- End Shop Services -->
 {% endblock %}

@@ -1,7 +1,7 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
-from users.views import CreateCustomer, login_, AddAddress, logout_, userPanel, render_contact_page
+from users.views import CreateCustomer, login_, logout_, userPanel, render_contact_page, AddAddress
 
 app_name = 'users'
 urlpatterns = [
@@ -11,6 +11,6 @@ urlpatterns = [
     path('login/', login_, name='login'),
     path('logout/', logout_, name='logout'),
     path('addresses/add', AddAddress.as_view(), name='address-add'),
-    path('user/', userPanel, name='user_panel'),
+    path('', userPanel, name='user_panel'),
     path('contact/', render_contact_page, name='contact')
 ]

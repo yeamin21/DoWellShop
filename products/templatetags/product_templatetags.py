@@ -18,8 +18,3 @@ def manufacturers():
 @register.inclusion_tag('products/latestproduct_list.html')
 def products(count=None):
     return {'products': Product.objects.order_by('-time_added')[:count]}
-
-
-@register.inclusion_tag('users/dummy_template.html')
-def categories(template='products/category_list.html'):
-    return {'categories': Category.objects.all(), 'template':template}

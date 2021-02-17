@@ -66,7 +66,14 @@
                                 <i class="fa fa-location-arrow"></i>
                                 <h4 class="title">Your Addresses</h4>
                                 <ul>
-                                    {% addresses request.user %}
+                                   {% for address in addresses %}
+    <div class="border-bottom">
+        <a class="l1 list-address">{{ address }}<br>
+            {{ address.city }}<br>
+            {{ address.division }}<br></a>
+    </div>
+{% endfor %}
+
                                 </ul>
                                 <a id="addmo">Add Address</a>
                             </div>
@@ -97,5 +104,17 @@
             }
         }
     </script>
+<style>
+    .l1 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
 
+    .border-bottom {
+        border-bottom: 1px solid #F7941D;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+</style>
 {% endblock userPanel %}

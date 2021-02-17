@@ -1,0 +1,3 @@
+{% for category in categories %}
+    <option><a href="{% url 'products:categorized-products' category.name %}">{{ category.name }}</option>
+{% endfor %}
