@@ -18,18 +18,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-
-from products.views import ProductViewSet
-
-router = routers.DefaultRouter()
-router.register('products', ProductViewSet)
+from products.api_views import ProductAPI,CreateProductAPI
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
     path('account/', include('users.urls')),
     path('cart/', include('cart.urls')),
-    path('api/', include(router.urls)),
+    path('api/', ProductAPI.as_view()),
+    path('api/create',CreateProductAPI.as_view())
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

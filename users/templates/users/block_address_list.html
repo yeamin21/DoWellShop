@@ -1,0 +1,29 @@
+{% for address in addresses %}
+        <div class="border-bottom">
+            <a class="l1 list-address">{{ address }}<br>
+            {{ address.city }}<br>
+            {{ address.division }}<br></a>
+        </div>
+{% endfor %}
+<style>
+    .l1{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .border-bottom{
+        border-bottom: 1px solid #F7941D;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+{#<script type="text/javascript">#}
+{#    if(location.pathname=="/cart/checkout/")#}
+{#    {#}
+{#        x=document.getElementsByClassName('list-address')#}
+{#    for (let i =0;i<x.length;i++)#}
+{#    {#}
+{#        x[i].outerHTML='<input class="list-address l1" name="address" type="radio"> '+x[i].innerHTML#}
+{#    }#}
+{#    }#}
+{#</script>#}

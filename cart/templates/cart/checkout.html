@@ -49,7 +49,7 @@
                                 <h2>Delivery Address</h2>
                                 <div class="content">
                                     <div class="checkbox">
-                                        {% addresses request.user %}
+                                        {% addresses request.user template='users/block_adress_list_radio.html'%}
                                     </div>
                                     
                                 </div>

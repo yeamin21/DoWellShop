@@ -80,7 +80,7 @@ function load_cartItems() {
         $('#cart-body').append(`<tr>
             <td class='product-des'><p class='product-name'><a href='#'>${cartItems[item].productName}</a></p></td>
             <td data-title='Price'><span class='product-unitprice'>${cartItems[item].unitprice}</span></td>
-            <td><input class='product-quantity'  data-productid=${cartItems[item].productId} type='number' value='${cartItems[item].quantity}' min='1'></td>
+            <td><input class='product-quantity text-center'  data-productid=${cartItems[item].productId} type='number' value='${cartItems[item].quantity}' min='1'></td>
             <td class='total-price'>${(parseFloat(cartItems[item].quantity) * parseFloat(cartItems[item].unitprice)).toFixed(2)}</td>
             <td class='action'><a class="remove" onclick="remove(${cartItems[item].productId})"><i class='ti-trash remove-icon'></i></a></td>
             </tr>`)

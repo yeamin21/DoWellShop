@@ -2,7 +2,6 @@ from django.urls import path, include
 from rest_framework import routers
 
 from products import views
-from products.views import ProductViewSet
 
 app_name = 'products'
 

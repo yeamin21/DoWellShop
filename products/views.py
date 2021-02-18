@@ -1,12 +1,5 @@
-from django.core.paginator import EmptyPage
-from django.core.paginator import PageNotAnInteger
-from django.core.paginator import Paginator
-from django.shortcuts import render
 from django.views import generic
-from rest_framework import viewsets
-
 from products.models import Product, Category, Manufacturer
-from .serializers import ProductSerializer
 
 
 class ProductList(generic.ListView):
@@ -41,6 +34,3 @@ class ManufacturerItems(ProductList):
         return context
 
 
-class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer

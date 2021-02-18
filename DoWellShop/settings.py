@@ -70,7 +70,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'DoWellShop.custom_context_processor.categories',
-                'users.custom_context_processor.addresses'
             ],
         },
     },
