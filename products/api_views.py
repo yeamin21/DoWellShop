@@ -6,8 +6,10 @@ from products.serializers import ProductSerializer
 
 
 class ProductAPI(ListAPIView):
+
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
 
 class CreateProductAPI(CreateAPIView):
     permission_classes = [IsAdminUser]

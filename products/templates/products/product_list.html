@@ -10,11 +10,14 @@
                         <!-- Single Widget -->
                         <div class="single-widget category">
                             <h3 class="title">Categories</h3>
-                            <ul class="categor-list">
-                                {% for category in categories %}
-                                <a>{{category}}</a>
-                                {% endfor %}
-                            </ul>
+                            <form method="GET">
+                                <ul class="categor-list">
+                                    {% for category in categories %}
+                                        <li><a href="/?category={{category}}">{{category}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </form>
+                            
                         </div>
                         <!--/ End Single Widget -->
                         <!-- Shop By Price -->
@@ -62,7 +65,13 @@
                         <!-- Single Widget -->
                         <div class="single-widget categor-list">
                             <h3 class="title">Manufacturers</h3>
-                            {% manufacturers %}
+                            <form method="GET">
+                                <ul class="categor-list">
+                                    {% for manufacturer in manufacturers %}
+                                    <li><a href="/?manufacturer={{manufacturer}}">{{manufacturer}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </form>
                         </div>
                         <!--/ End Single Widget -->
                     </div>

@@ -18,6 +18,15 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class ProductQueryset(models.QuerySet):
+    def products_by_category(self, category):
+        return self.filter(category=category)
+    def product_by_manufacturer(self, manufacturer):
+        return self.filter(manufacturer=manufacturer)
+    def product_by_category_and_name(self, category,name):
+        return self.filter(category=category, name__icontains=name)
+    def prodcut_by_price(self,price_lte):
+        return self.filter(price__lte=price_lte)
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
@@ -26,6 +35,7 @@ class Product(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, blank=True, null=True, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
     time_added = models.DateTimeField(auto_now=True)
+    objects = ProductQueryset.as_manager()
 
     def __str__(self):
         return self.name
