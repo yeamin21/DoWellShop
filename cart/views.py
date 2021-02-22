@@ -1,14 +1,10 @@
 import json
 
-from django.contrib.auth.decorators import login_required
-from django.forms import fields
-from django.forms.models import fields_for_model
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.template.loader import render_to_string
 from django.views import generic
 
-from cart.forms import OrderForm, OrderItemForm
+from cart.forms import OrderItemForm
 from cart.models import OrderItem, Order
 from products.models import Product
 from users.models import Address

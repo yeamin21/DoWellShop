@@ -1,6 +1,6 @@
 from django import template
 
-from products.models import Category, Product, Manufacturer
+from products.models import Product, Manufacturer
 
 register = template.Library()
 
@@ -18,3 +18,11 @@ def manufacturers():
 @register.inclusion_tag('products/latestproduct_list.html')
 def products(count=None):
     return {'products': Product.objects.order_by('-time_added')[:count]}
+
+
+@register.simple_tag(takes_context=True)
+def query_transform(context, **kwargs):
+    query = context['request'].GET.copy()
+    for k, v in kwargs.items():
+        query[k] = v
+    return '{}{}'.format('?',query.urlencode())

@@ -1,9 +1,8 @@
 from django import forms
-from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 
-from users.models import User, Seller, Address
+from users.models import User, Address
 
 
 # class RestaurantCreationForm(UserCreationForm):

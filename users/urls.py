@@ -1,4 +1,3 @@
-from django.contrib.auth import views as auth_views
 from django.urls import path
 
 from users.views import CreateCustomer, login_, logout_, userPanel, render_contact_page, AddAddress

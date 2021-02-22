@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 {% load static %}
+
 <head>
     <!-- Meta Tag -->
     <meta charset="utf-8">
@@ -194,17 +195,14 @@
                                     <option value="{{category}}">{{ category }}</option>
                                     {% endfor %}
                                 </select>
-          
                                     <input name="product" placeholder="Search Products Here....." type="search">
                                     <button type="submit" class="btnn"><i class="ti-search"></i></button>
                              </div>
-                         
-                         </form>
-                         <form method="GET">
-                             {{filter.form}}
-                             <input type="submit">
-                         </form>
 
+
+
+
+                         </form>
                         </div>
                     </div>
                 </div>
@@ -329,6 +327,8 @@
         </div>
     </div>
 </div>
+{% load product_templatetags %}
+
 
 {% block cartitems %}
 {% endblock cartitems %}

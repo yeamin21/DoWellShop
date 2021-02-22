@@ -1,5 +1,5 @@
 from rest_framework.generics import ListAPIView, CreateAPIView
-from rest_framework.permissions import IsAdminUser, BasePermission
+from rest_framework.permissions import IsAdminUser
 
 from products.models import Product
 from products.serializers import ProductSerializer

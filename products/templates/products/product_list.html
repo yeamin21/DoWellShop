@@ -12,8 +12,9 @@
                             <h3 class="title">Categories</h3>
                             <form method="GET">
                                 <ul class="categor-list">
+                                <li><a href="/?category=all">All</a> </li>
                                     {% for category in categories %}
-                                        <li><a href="/?category={{category}}">{{category}}</a></li>
+                                        <li><a href="/?category={{ category }}">{{category}}</a></li>
                                     {% endfor %}
                                 </ul>
                             </form>
@@ -28,12 +29,15 @@
                                     <div id="slider-range"></div>
                                     <div class="price_slider_amount">
                                         <div class="label-input">
-                                            <span>Range:</span><input type="text" id="amount" name="price"
-                                                                      placeholder="Add Your Price"/>
+                                            <span>Range:</span>
+                                                <input type="text" id="amount" name="lt" placeholder="Add Your Price"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <form method="get">
+                                <a href= "{% query_transform lt=500 %}">XX</a>
+                            </form>
                             <ul class="check-box-list">
                                 <li>
                                     <label class="checkbox-inline" for="1"><input name="news" id="1" type="checkbox">$20
@@ -192,19 +196,19 @@
             <ul class="pagination-list">
                 {% if is_paginated %}
                     {% if page_obj.has_previous %}
-                        <li><a href="?page=1"><i class="ti-angle-double-left"></i></a></li>
-                        <li><a href="?page={{ page_obj.previous_page_number }}"><i class="ti-angle-left"></i></a></li>
+                        <li><a href="{% query_transform page=1 %}"><i class="ti-angle-double-left"></i></a></li>
+                        <li><a href="{% query_transform page=page_obj.previous_page_number %}"><i class="ti-angle-left"></i></a></li>
                     {% endif %}
                     {% for i in paginator.page_range %}
                         {% if page_obj.number == i %}
                             <li class="active"><a><span>{{ i }} <span class="sr-only">(current)</span></span></a></li>
                         {% else %}
-                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            <li><a href="{%  query_transform page=i %}">{{ i }}</a></li>
                         {% endif %}
                     {% endfor %}
                     {% if page_obj.has_next %}
-                        <li><a href="?page={{ page_obj.next_page_number }}"><i class="ti-angle-right"></i></a></li>
-                        <li><a href="?page={{ page_obj.paginator.num_pages }}"><i class="ti-angle-double-right"></i>
+                        <li><a href="{%  query_transform page=page_obj.next_page_number %}"><i class="ti-angle-right"></i></a></li>
+                        <li><a href="{%  query_transform page=page_obj.paginator.num_pages %}"><i class="ti-angle-double-right"></i>
                         </a></li>
                     {% endif %}
                 {% endif %}
