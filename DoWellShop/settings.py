@@ -72,7 +72,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'DoWellShop.custom_context_processor.categories',
                 'DoWellShop.custom_context_processor.manufacturers',
-                'DoWellShop.custom_context_processor.req',
             ],
 
         },

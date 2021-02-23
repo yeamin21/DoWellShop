@@ -1,4 +1,5 @@
 from django import template
+from django.http import QueryDict
 
 from products.models import Product, Manufacturer
 
@@ -25,4 +26,4 @@ def query_transform(context, **kwargs):
     query = context['request'].GET.copy()
     for k, v in kwargs.items():
         query[k] = v
-    return '{}{}'.format('?',query.urlencode())
+    return '?{}'.format(query.urlencode(safe=False))

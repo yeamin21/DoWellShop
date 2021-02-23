@@ -2,6 +2,7 @@
 
 {% block products %}
     {% load product_templatetags %}
+    <h1>{{ordering}}</h1>
     <section class="product-area shop-sidebar shop section">
         <div class="container">
             <div class="row">
@@ -14,11 +15,11 @@
                                 <ul class="categor-list">
                                 <li><a href="/?category=all">All</a> </li>
                                     {% for category in categories %}
-                                        <li><a href="/?category={{ category }}">{{category}}</a></li>
+                                        <li><a href="{% query_transform category=category %}">{{category}}</a></li>
                                     {% endfor %}
                                 </ul>
                             </form>
-                            
+
                         </div>
                         <!--/ End Single Widget -->
                         <!-- Shop By Price -->
@@ -72,7 +73,7 @@
                             <form method="GET">
                                 <ul class="categor-list">
                                     {% for manufacturer in manufacturers %}
-                                    <li><a href="/?manufacturer={{manufacturer}}">{{manufacturer}}</a></li>
+                                    <li><a href="{% query_transform manufacturer=manufacturer %}">{{manufacturer}}</a></li>
                                     {% endfor %}
                                 </ul>
                             </form>
@@ -80,28 +81,35 @@
                         <!--/ End Single Widget -->
                     </div>
                 </div>
+
                 <div class="col-lg-9 col-md-8 col-12">
                     <div class="row">
                         <div class="col-12">
                             <!-- Shop Top -->
                             <div class="shop-top">
                                 <div class="shop-shorter">
-                                    <div class="single-shorter">
-                                        <label>Show :</label>
-                                        <select>
-                                            <option selected="selected">09</option>
-                                            <option>15</option>
-                                            <option>25</option>
-                                            <option>30</option>
-                                        </select>
+                                    <label>Show :</label>
+                                    <div class="single-shorter" >
+                                     <div class="nice-select" tabindex="0">
+                                         <span class="current">09</span>
+                                         <ul class="list">
+                                             <li> <a href={% query_transform pagination=9 %}><p class="text-center">09</p></a> </li>
+                                           <li> <a href={% query_transform pagination=12 %}><p class="text-center">12</p></a> </li>
+                                           <li> <a href={% query_transform pagination=15 %}><p class="text-center">15</p></a> </li>
+                                           <li> <a href={% query_transform pagination=20 %}><p class="text-center">20</p></a> </li>
+                                         </ul>
+                                     </div>
                                     </div>
                                     <div class="single-shorter">
+                                <form method="get">
                                         <label>Sort By :</label>
-                                        <select>
-                                            <option selected="selected">Name</option>
-                                            <option>Price</option>
-                                            <option>Size</option>
-                                        </select>
+                                             <select name="order" onchange="this.form.submit()">
+                                                 <option selected="selected" value="{{ ordering }}">{{ ordering }}</option>
+                                                 <option value="name">Name</option>
+                                                 <option value="price">Price</option>
+
+                                            </select>
+                                </form>
                                     </div>
                                 </div>
                                 <ul class="view-mode">
@@ -191,6 +199,7 @@
 
 
         </div>
+
         <div class="pagination center pagination-lg pagination-sm">
 
             <ul class="pagination-list">
