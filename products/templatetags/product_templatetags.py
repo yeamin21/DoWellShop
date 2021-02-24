@@ -20,10 +20,9 @@ def manufacturers():
 def products(count=None):
     return {'products': Product.objects.order_by('-time_added')[:count]}
 
-
 @register.simple_tag(takes_context=True)
-def query_transform(context, **kwargs):
+def query_transform(context, **kwargs,):
     query = context['request'].GET.copy()
     for k, v in kwargs.items():
         query[k] = v
-    return '?{}'.format(query.urlencode(safe=False))
+    return '?{}'.format(query.urlencode())

@@ -7,7 +7,7 @@ class ProductList(generic.ListView):
     model = Product
     context_object_name = 'products'
     ordering = 'price'
-    paginate_by = 9
+    paginate_by = 1
 
     def get_ordering(self):
         order = super(ProductList, self).get_ordering()
@@ -40,11 +40,12 @@ class ProductList(generic.ListView):
             query = query.filter(price__lte=lt)
         return query
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        c=  super(ProductList, self).get_context_data()
-        c['products']=self.get_queryset()
-        c['ordering']=self.get_ordering()
-        return c
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     c = super(ProductList, self).get_context_data()
+    #     c['products']=self.get_queryset()
+    #     c['ordering']=self.get_ordering()
+    #     c['is_paginated'] =self.paginate_by
+    #     return c
 
 class ProductDetails(generic.DetailView):
     model = Product

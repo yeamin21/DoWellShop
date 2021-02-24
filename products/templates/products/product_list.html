@@ -13,7 +13,7 @@
                             <h3 class="title">Categories</h3>
                             <form method="GET">
                                 <ul class="categor-list">
-                                <li><a href="/?category=all">All</a> </li>
+                                <li><a href="{% query_transform category='all' %}">All</a> </li>
                                     {% for category in categories %}
                                         <li><a href="{% query_transform category=category %}">{{category}}</a></li>
                                     {% endfor %}
@@ -88,28 +88,27 @@
                             <!-- Shop Top -->
                             <div class="shop-top">
                                 <div class="shop-shorter">
+                                      <div class="single-shorter">
                                     <label>Show :</label>
-                                    <div class="single-shorter" >
                                      <div class="nice-select" tabindex="0">
                                          <span class="current">09</span>
-                                         <ul class="list">
-                                             <li> <a href={% query_transform pagination=9 %}><p class="text-center">09</p></a> </li>
-                                           <li> <a href={% query_transform pagination=12 %}><p class="text-center">12</p></a> </li>
-                                           <li> <a href={% query_transform pagination=15 %}><p class="text-center">15</p></a> </li>
-                                           <li> <a href={% query_transform pagination=20 %}><p class="text-center">20</p></a> </li>
+                                         <ul class="list ">
+                                             <li><a href={% query_transform pagination=9 %}><p class="option">09</p></a> </li>
+                                             <li><a href={% query_transform pagination=12 %}><p class="option">12</p></a> </li>
+                                             <li><a href={% query_transform pagination=15 %}><p class="option">15</p></a> </li>
+                                             <li><a href={% query_transform pagination=20 %}><p class="option">20</p></a> </li>
                                          </ul>
                                      </div>
                                     </div>
                                     <div class="single-shorter">
-                                <form method="get">
                                         <label>Sort By :</label>
-                                             <select name="order" onchange="this.form.submit()">
-                                                 <option selected="selected" value="{{ ordering }}">{{ ordering }}</option>
-                                                 <option value="name">Name</option>
-                                                 <option value="price">Price</option>
-
-                                            </select>
-                                </form>
+                                        <div class="nice-select" tabindex="0">
+                                         <span class="current">Name</span>
+                                         <ul class="list ">
+                                             <li><a href={% query_transform order='name' %}><p class="option">Name</p></a> </li>
+                                             <li><a href={% query_transform order='price' %}><p class="option">Price</p></a> </li>
+                                         </ul>
+                                     </div>
                                     </div>
                                 </div>
                                 <ul class="view-mode">
