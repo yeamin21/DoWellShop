@@ -1,0 +1,101 @@
+import axios from "axios";
+import { Component } from "react";
+import { createContext, useState } from "react";
+import { Redirect } from "react-router-dom";
+import { axiosInstance } from "../Services/ApiCalls";
+import jwt_decode from "jwt-decode";
+
+export const UserContext = createContext({
+  username: "",
+  access: "",
+  refresh: "",
+
+  authorized: false,
+  signin: () => {},
+  signout: () => {},
+});
+
+export default class UserContextProvider extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      access: localStorage.getItem("access") || "",
+      refresh: localStorage.getItem("refresh") || "",
+      username: "",
+      authorized: "",
+    };
+
+    this.signout = this.signout.bind(this);
+    this.signin = this.signin.bind(this);
+  }
+
+  componentDidMount() {
+    this.state.access && this.state.refresh && this.retreive();
+  }
+
+  signin = async (username, password) => {
+    await axiosInstance
+      .post("/token/", { username, password })
+      .then((response) => {
+        localStorage.setItem("access", response.data.access);
+        localStorage.setItem("refresh", response.data.refresh);
+        axiosInstance.defaults.headers[
+          "Authorization"
+        ] = `Bearer ${localStorage.getItem("access")}`;
+        this.setState(
+          {
+            access: response.data.access,
+            refresh: response.data.refresh,
+          },
+          () => this.retreive()
+        );
+      });
+  };
+  signout = () => {
+    this.setState({ username: "", access: "", refresh: "", authorized: false });
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+  };
+
+  retreive = async () => {
+    axiosInstance
+      .get("/user/", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("access")}` },
+      })
+      .then(
+        (response) => {
+          this.setState(
+            {
+              username: response.data.username,
+              authorized: true,
+            },
+            () =>
+              (document.cookie = `username = ${response.data.username}; expires= Thu, 18 Dec 2027 12:00:00 UTC`)
+          );
+        },
+        (response) => {
+          console.log(response);
+        }
+      );
+    // .catch((error) => {
+    //   console.log("error in user", error);
+    // });
+  };
+  render() {
+    const { username, access, refresh, authorized } = this.state;
+    const value = {
+      username,
+      access,
+      refresh,
+      authorized,
+      signout: this.signout,
+      signin: this.signin,
+    };
+    return (
+      <UserContext.Provider value={value}>
+        {this.props.children}
+      </UserContext.Provider>
+    );
+  }
+}

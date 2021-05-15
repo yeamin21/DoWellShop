@@ -1,0 +1,11 @@
+<div class="center">
+    <h1>Order Successfully Placed</h1>
+</div>
+<div>
+    {{ order.id }}
+</div>
+<div>
+    {{ order.orderStatus }}
+</div>
+
+<a href="{% url 'products:products' %}">Back To Store</a>

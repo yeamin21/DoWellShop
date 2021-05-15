@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+{% block userPanel %}
+    {% load user_templates %}
+    {% load order_templates %}
+    {% block userAddresses %}
+    {% endblock userAddresses %}
+    {% add_address %}
+
+    <section id="contact-us" class="contact-us section">
+        <div class="container">
+            <div class="contact-head">
+                <div class="row">
+                    <div class="col-lg-8 col-12 form-main">
+                        <div class="title ">
+                            <h4>Your Orders</h4>
+                        </div>
+                        <div>
+                            <table class="table shopping-summery">
+                                <thead>
+                                <tr class="main-hading">
+                                    <th class="text-center">
+                                        Order ID
+                                    </th>
+                                    <th class="text-center">
+                                        Order Total
+                                    </th>
+                                    <th class="text-center">
+                                        Order Status
+                                    </th>
+                                </tr>
+
+                                </thead>
+                                {% orders request.user %}
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="single-head">
+                            <div class="single-info">
+                                <i class="fa fa-id-card"></i>
+                                <h4 class="title">Personal Information</h4>
+                                <ul>
+                                    <li class="fa fa-user-circle"> {{ request.user }}</li>
+                                    <br>
+                                    <li class="fa fa-address-card"> {{ request.user.get_full_name }}</li>
+                                    <br>
+                                    <li class="fa fa-phone"> {{ request.user.phone }}</li>
+                                    <br>
+                                    <li class="fa fa-envelope"> {{ request.user.email }}</li>
+                                    <br>
+                                </ul>
+
+                            </div>
+
+                            <div class="single-info">
+                                <i class="fa fa-envelope-open"></i>
+
+                                <ul>
+                                    <li>{{ request.user.email }}</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="single-head">
+                            <div class="single-info">
+                                <i class="fa fa-location-arrow"></i>
+                                <h4 class="title">Your Addresses</h4>
+                                <ul>
+                                   {% for address in addresses %}
+    <div class="border-bottom">
+        <a class="l1 list-address">{{ address }}<br>
+            {{ address.city }}<br>
+            {{ address.division }}<br></a>
+    </div>
+{% endfor %}
+
+                                </ul>
+                                <a id="addmo">Add Address</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+    <script>
+        var m = document.getElementById('addAddressModal');
+        var b = document.getElementById('addmo')
+        var closeButton = document.getElementById('modal-close')
+        b.addEventListener('click', function () {
+            m.classList.add('show')
+            m.style.display = 'block';
+
+        })
+        closeButton.onclick = function () {
+            m.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == m) {
+                m.style.display = "none";
+            }
+        }
+    </script>
+<style>
+    .l1 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid #F7941D;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+{% endblock userPanel %}

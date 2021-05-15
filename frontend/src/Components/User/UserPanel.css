@@ -1,0 +1,27 @@
+.userpanel {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  margin: 3rem;
+  grid-gap: 2rem;
+}
+
+.user-info {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.circ {
+  border-radius: 75%;
+  position: absolute;
+  background: orange;
+  top: -10%;
+  left: 35%;
+  width: 10rem;
+  height: 10rem;
+  box-shadow: 0 4px 8px 0 rgba(185, 37, 37, 0.2);
+}

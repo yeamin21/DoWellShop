@@ -1,0 +1,3 @@
+{% for manufacturer in manufacturers %}
+    <a href="{% url 'products:manufacturer-products' manufacturer.name %}">{{ manufacturer.name }}</a>
+{% endfor %}

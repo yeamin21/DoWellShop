@@ -1,0 +1,68 @@
+{% extends 'index.html' %}
+{% block cartitems %}
+
+    <!-- Shopping Cart -->
+    <div class="shopping-cart section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Shopping Summery -->
+                    <table id="cart-table" class="table shopping-summery text-center">
+<thead>
+        <tr class="main-hading">
+        <th>NAME</th>
+        <th>UNIT PRICE</th>
+    <th>QUANTITY</th>
+        <th>TOTAL</th>
+        <th >Remove</th>
+        </tr>
+        </thead>
+        <tbody id='cart-body'>
+        </tbody>
+        </table>
+   <!--/ End Shopping Summery -->
+        </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Total Amount -->
+                    <div class="total-amount">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-5 col-12">
+                                <div class="left">
+                                    <div class="coupon">
+                                        <form action="#" target="_blank">
+                                            <input name="Coupon" placeholder="Enter Your Coupon">
+                                            <button class="btn">Apply</button>
+                                        </form>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label class="checkbox-inline" for="2"><input name="news" id="2"
+                                                                                      type="checkbox"> Shipping
+                                            (+10$)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-7 col-12">
+                                <div class="right">
+                                    <ul>
+                                        <li>Cart Subtotal<span id="cart-subtotal">0</span></li>
+                                        <li>Shipping<span>Free</span></li>
+                                        <li>You Save<span>$0</span></li>
+                                        <li class="last">You Pay<span>$0</span></li>
+                                    </ul>
+                                    <div class="button5">
+                                        <a id="btn-checkout" href="{% url 'cart:checkout' %}" class="btn">Checkout</a>
+                                        <a href="{% url 'products:products' %}" class="btn">Continue shopping</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ End Total Amount -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Shopping Cart -->t>
+{% endblock cartitems %}

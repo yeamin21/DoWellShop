@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zxx">
+{% load static %}
+
+<head>
+    <!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='copyright' content=''>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title Tag  -->
+    <title>DoWell Eshop</title>
+    <!-- Favicon -->
+    <link rel="icon" rel="icon" href="{% static 'images/favicon.ico' %}">
+    <!-- Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+          rel="stylesheet">
+
+
+    <!-- StyleSheet -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <!-- Jquery Ui -->
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="{% static 'css/niceselect.css' %}">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="{% static 'css/flex-slider.min.css' %}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+
+</head>
+<body class="js">
+
+<!-- Preloader -->
+{#	<div class="preloader">#}
+{#		<div class="preloader-inner">#}
+{#			<div class="preloader-icon">#}
+{#				<span></span>#}
+{#				<span></span>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
+<!-- End Preloader -->
+
+<!-- Header -->
+<header class="header shop">
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-12">
+                    <!-- Top Left -->
+                    <div class="top-left">
+                        <ul class="list-main">
+                            <li><i class="ti-headphone-alt"></i>+8801954492600</li>
+                            <li><i class="ti-email"></i> yeamin21@outlook.com</li>
+                        </ul>
+                    </div>
+                    <!--/ End Top Left -->
+                </div>
+                <div class="col-lg-8 col-md-12 col-12">
+                    <!-- Top Right -->
+                    <div class="right-content">
+                        <div class="list-main">
+                            <li><i class="ti-location-pin"></i> Store location</li>
+                            <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
+
+                            <style>
+                                /* Style The Dropdown Button */
+
+                                .dropbtn {
+                                    background-color: #4CAF50;
+                                    color: white;
+                                    padding: 16px;
+                                    font-size: 16px;
+                                    border: none;
+                                    cursor: pointer;
+                                }
+
+                                /* The container <div> - needed to position the dropdown content */
+                                .dropdown {
+                                    position: relative;
+                                    display: inline-block;
+                                }
+
+                                /* Dropdown Content (Hidden by Default) */
+                                .dropdown-content {
+                                    display: none;
+                                    position: absolute;
+                                    background-color: #f9f9f9;
+                                    min-width: 160px;
+                                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                                    z-index: 1;
+                                    left: 0;
+                                }
+
+                                /* Links inside the dropdown */
+                                .dropdown-content a {
+                                    color: black;
+                                    padding: 12px 16px;
+                                    text-decoration: none;
+                                    display: block;
+                                }
+
+                                /* Change color of dropdown links on hover */
+                                .dropdown-content a:hover {
+                                    background-color: #f1f1f1
+                                }
+
+                                /* Show the dropdown menu on hover */
+                                .dropdown:hover .dropdown-content {
+                                    display: block;
+                                }
+
+                                /* Change the background color of the dropdown button when the dropdown content is shown */
+                                .dropdown:hover .dropbtn {
+                                    background-color: #3e8e41;
+                                }
+                            </style>
+
+                            {% if request.user.is_authenticated %}
+                                <li><i class="ti-user"></i><span><a>{{ request.user.username }}</a></span></li>
+                                <li><i class="ti-power-off"></i><a href="{% url 'users:logout' %}">Logout</a></li>
+                            {% else %}
+
+                                <div class="dropdown">
+                                    <li><i class="ti-power-off"></i><a
+                                            href="{% url 'users:login' %}?next={{ request.path }}">Login</a></li>
+                                    <!-- <div class="dropdown-content">
+                                        <form class="form container" action="{% url 'users:login' %}" method="POST">
+                                            {% csrf_token %}
+                                            <label>username</label>
+                                            <input type="text" name="username">
+                                            <label>password</label>
+                                            <input type="password" name="password"><br>
+                                            <div class="col-auto">
+                                                <div>
+                                                    <input class="btn" type="submit" value="Login">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div> -->
+                                </div>
+                            {% endif %}
+                            </ul>
+                        </div>
+                        <!-- End Top Right -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Topbar -->
+        <div class="middle-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="{% url 'products:products' %}"><img style=" height:45px"
+                                                                         src="{% static 'images/default.png' %}"
+                                                                         alt="logo"></a>
+                        </div>
+                        <!--/ End Logo -->
+                        <!-- Search Form -->
+                        <!--/ End Search Form -->
+                        <div class="mobile-nav"></div>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-12">
+                        <div class="search-bar-top">
+
+                            <form method="GET">
+                            <div class="search-bar">
+
+                                <select name="category">
+                                    <option selected="selected" value="all">All Category</option>
+                                    {% for category in categories %}
+                                    <option value="{{category}}">{{ category }}</option>
+                                    {% endfor %}
+                                </select>
+                                    <input name="product" placeholder="Search Products Here....." type="search">
+                                    <button type="submit" class="btnn"><i class="ti-search"></i></button>
+                             </div>
+
+
+
+
+                         </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="cat-nav-head">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="menu-area">
+                                <!-- Main Menu -->
+                                <nav class="navbar navbar-expand-lg">
+                                    <div class="navbar-collapse">
+                                        <div class="nav-inner">
+                                            <ul class="nav main-menu menu navbar-nav">
+                                                <li class="active"><a href="/">Home</a></li>
+                                                <li><a href="{% url 'products:products' %}">Product</a></li>
+                                                {#                                                <li><a href="#">Service</a></li>#}
+                                                <li><a href="#">Shop<i class="ti-angle-down"></i><span
+                                                        class="new">New</span></a>
+                                                    <ul class="dropdown">
+                                                        <li><a href="{% url 'products:products' %}">Products</a></li>
+                                                        <li><a href="{% url 'cart:list' %}">Cart</a></li>
+                                                        <li><a href="{% url 'cart:checkout' %}">Checkout</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="{% url 'users:contact' %}">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="right-bar">
+
+                                            <div class="sinlge-bar">
+                                                <a href="#" class="single-icon"><i class="fa fa-heart-o "
+                                                                                   aria-hidden="true"></i></a>
+                                            </div>
+                                            <div class="sinlge-bar">
+                                                <a href="{% url 'users:user_panel' %}" class="single-icon"><i
+                                                        class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                            </div>
+                                            <div class="sinlge-bar shopping">
+                                                <a href="{% url 'cart:list' %}" class="single-icon"
+                                                   ><i class="ti-bag" aria-hidden="true"></i> <span
+                                                        id="total-count" class="total-count">0</span></a>
+                                                <!-- Shopping Item -->
+                                                {#                                                <div class="shopping-item" id="dropdown-cart">#}
+                                                {#                                                    <div class="dropdown-cart-header" >#}
+                                                {#                                                        <span>2 Items</span>#}
+                                                {#                                                        <a href="{% url 'cart:list' %}">View Cart</a>#}
+                                                {#                                                    </div>#}
+                                                {#                                                    <ul class="shopping-list">#}
+                                                {#                                                        <li>#}
+                                                {#                                                            <a href="#" class="remove" title="Remove this item"><i#}
+                                                {#                                                                    class="fa fa-remove"></i></a>#}
+                                                {#                                                            <a class="cart-img" href="#"><img#}
+                                                {#                                                                    src="https://via.placeholder.com/70x70" alt="#"></a>#}
+                                                {#                                                            <h4><a href="#">Woman Ring</a></h4>#}
+                                                {#                                                            <p class="quantity">1x - <span class="amount">$99.00</span>#}
+                                                {#                                                            </p>#}
+                                                {#                                                        </li>#}
+                                                {#                                                        <li>#}
+                                                {#                                                            <a href="#" class="remove" title="Remove this item"><i#}
+                                                {#                                                                    class="fa fa-remove"></i></a>#}
+                                                {#                                                            <a class="cart-img" href="#"><img#}
+                                                {#                                                                    src="https://via.placeholder.com/70x70" alt="#"></a>#}
+                                                {#                                                            <h4><a href="#">Woman Necklace</a></h4>#}
+                                                {#                                                            <p class="quantity">1x - <span class="amount">$35.00</span>#}
+                                                {#                                                            </p>#}
+                                                {#                                                        </li>#}
+                                                {#                                                    </ul>#}
+                                                {#                                                    <div class="bottom">#}
+                                                {#                                                        <div class="total">#}
+                                                {#                                                            <span>Total</span>#}
+                                                {#                                                            <span class="total-amount">$134.00</span>#}
+                                                {#                                                        </div>#}
+                                                {#                                                        <a href="checkout.html" class="btn animate">Checkout</a>#}
+                                                {#                                                    </div>#}
+                                                {#                                                </div>#}
+                                                {#                                                <!--/ End Shopping Item -->#}
+                                                {#                                            </div>#}
+                                                {##}
+                                                {#                                            <script type="text/javascript">#}
+                                                {#                                                function showCart()#}
+                                                {#                                                {#}
+                                                {#                                                    dropcheckout = document.getElementById('dropdown-cart')#}
+                                                {#                                                    console.log(dropcheckout)#}
+                                                {#                                                    dropcheckout.style.display='block'#}
+                                                {##}
+                                                {#                                                }#}
+                                                {##}
+                                                {#                                            </script>#}
+                                                {#                                            <!-- Search Form -->#}
+                                                {##}
+                                                {#                                        </div>#}
+                                                {#                                    </div>#}
+                                </nav>
+                                <!--/ End Main Menu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!--/ End Header -->
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="blog-single.html">Shop Grid</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% load product_templatetags %}
+
+
+{% block cartitems %}
+{% endblock cartitems %}
+
+{% block products %}
+{% endblock products %}
+
+{% block checkout %}
+{% endblock checkout %}
+
+{% block product_details %}
+{% endblock product_details %}
+
+{% block userPanel %}
+{% endblock userPanel %}
+
+{% block loginform %}
+{% endblock loginform %}
+
+{% block registration %}
+{% endblock registration %}
+
+{% block order-details %}
+{% endblock order-details %}
+
+{% block contact %}
+{% endblock contact %}
+<!--/ End Product Style 1  -->
+<!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v9.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution="setup_tool"
+        page_id="101376048467271"
+  theme_color="#ff7e29">
+      </div>
+<!-- Start Shop Newsletter  -->
+<section class="shop-newsletter section">
+    <div class="container">
+        <div class="inner-top">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-12">
+                    <!-- Start Newsletter Inner -->
+                    <div class="inner">
+                        <h4>Newsletter</h4>
+                        <p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
+                        <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                            <input name="EMAIL" placeholder="Your email address" required="" type="email">
+                            <button class="btn">Subscribe</button>
+                        </form>
+                    </div>
+                    <!-- End Newsletter Inner -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Shop Newsletter -->
+<!-- Load Facebook SDK for JavaScript -->
+<!-- Start Footer Area -->
+<footer class="footer">
+    <!-- Footer Top -->
+    <div class="footer-top section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer about">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo2.png" alt="/"></a>
+                        </div>
+                        <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros
+                            eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis
+                            luctus, metus.</p>
+                        <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span>
+                        </p>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer links">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Faq</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer links">
+                        <h4>Customer Service</h4>
+                        <ul>
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Money-back</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer social">
+                        <h4>Get In Tuch</h4>
+                        <!-- Single Widget -->
+                        <div class="contact">
+                            <ul>
+                                <li>NO. 342 - London Oxford Street.</li>
+                                <li>012 United Kingdom.</li>
+                                <li>info@eshop.com</li>
+                                <li>+032 3456 7890</li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                        <ul>
+                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                            <li><a href="#"><i class="ti-twitter"></i></a></li>
+                            <li><a href="#"><i class="ti-flickr"></i></a></li>
+                            <li><a href="#"><i class="ti-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Top -->
+    <div class="copyright">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="left">
+                            <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a> -
+                                All Rights Reserved.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="right">
+                            <img src="images/payments.png" alt="#">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- /End Footer Area -->
+<!-- Jquery -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.0.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<!-- Popper JS -->
+<script src="{% static 'js/popper.min.js' %}"></script>
+<!-- Bootstrap JS -->
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Color JS -->
+<script src="{% static 'js/colors.js' %}"></script>
+<!-- Slicknav JS -->
+<script src="{% static 'js/slicknav.min.js' %}"></script>
+<!-- Owl Carousel JS -->
+<script src="{% static 'js/owl-carousel.js' %}"></script>
+<!-- Magnific Popup JS -->
+<script src="{% static 'js/magnific-popup.js' %}"></script>
+<!-- Fancybox JS -->
+<script src="{% static 'js/facnybox.min.js' %}"></script>
+<!-- Waypoints JS -->
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<!-- Countdown JS -->
+<script src="{% static 'js/finalcountdown.min.js' %}"></script>
+<!-- Nice Select JS -->
+<script src="{% static 'js/nicesellect.js' %}"></script>
+<!-- Ytplayer JS -->
+<script src="{% static 'js/ytplayer.min.js' %}"></script>
+<!-- Flex Slider JS -->
+<script src="{% static 'js/flex-slider.js' %}"></script>
+<!-- ScrollUp JS -->
+<script src="{% static 'js/scrollup.js' %}"></script>
+<!-- Onepage Nav JS -->
+<script src="{% static 'js/onepage-nav.min.js' %}"></script>
+<!-- Easing JS -->
+<script src="{% static 'js/easing.js' %}"></script>
+<!-- Active JS -->
+<script src="{% static 'js/active.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
+
+</body>
+
+
+</html>

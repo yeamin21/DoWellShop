@@ -1,0 +1,15 @@
+<tbody>
+{% for order in orders %}
+    <tr>
+        <td class="text-center">
+            <a href='{% url 'cart:orderDetails' order %}'>{{ order }}</a>
+        </td>
+        <td class="text-center">
+            {{ order.orderTotal }}
+        </td>
+        <td class="text-center">
+            {{ order.status }}
+        </td>
+    </tr>
+{% endfor %}
+</tbody>

@@ -1,0 +1,71 @@
+.top {
+  display: grid;
+  grid-template-rows: minmax(100px, auto) auto;
+}
+
+/* .nav-menu {
+  background-color: rgba(0, 0, 0, 0.979);
+  display: grid;
+  grid-template-columns: 6fr 0.5fr 0.5fr;
+}
+.nav-menu ul {
+ 
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.nav-menu ul li {
+  width: 6rem;
+  text-align: center;
+  display: inline-block;
+  padding: 1rem;
+  color: azure;
+}
+.nav-menu ul li:hover,
+.active {
+  background: orange;
+}
+
+.nav-cart,
+.nav-user {
+  text-align: center;
+  display: inline-block;
+  padding: 0.75rem;
+  color: azure;
+  position: relative;
+} */
+
+/* @media screen and (max-width: 600px) {
+  .top #x {
+    display: block;
+  }
+  .top .nav-menu {
+    display: none;
+  }
+} */
+/* .nav {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: black;
+}
+.nav-menu {
+  flex: 9;
+  margin-left: 10rem;
+}
+.nav-menu a,
+.nav-user a {
+  text-decoration: none;
+}
+
+
+
+
+@media all and (max-width: 600px) {
+  .nav {
+    background: rgb(19, 160, 207);
+  }
+} */

@@ -1,0 +1,23 @@
+<div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="modal-close" class="close" data-dismiss="modal" aria-label="Close"><span
+                        class="ti-close" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row no-gutters">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <form action="{% url 'users:address-add' %}" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="submit" value="Add Address">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

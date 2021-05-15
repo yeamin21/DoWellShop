@@ -1,0 +1,54 @@
+{% extends 'index.html' %} {% block order-details %}
+<section id="contact-us" class="contact-us section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-10">
+        <div class="title">
+          <h4>Order Details</h4>
+          <h6>Order ID: {{ order.id }}</h6>
+        </div>
+      </div>
+      <div class="col-lg-2 col-2">
+        <form method="post">
+          {% csrf_token %}
+          <div class="container">
+            <input type="hidden" /><a href="{% url 'cart:cancel_order' order %}">
+                <i
+                class="fa fa-ban"
+                style="color: rgb(167, 50, 50)"
+                aria-hidden="true"
+                ></i>
+              Cancel Order</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        <table
+          id="cart-table"
+          class="table shopping-summery text-center col-lg-8 col-12 form-main"
+        >
+          <thead>
+            <tr class="main-hading">
+              <th>NAME</th>
+              <th>UNIT PRICE</th>
+              <th>QUANTITY</th>
+              <th>TOTAL</th>
+            </tr>
+          </thead>
+          {% for items in order.orderItem.all %}
+          <tr>
+            <td>{{ items.item }}</td>
+            <td>{{ items.unit_price }}</td>
+            <td>{{items.quantity }}</td>
+            <td>{{items.total_price }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock order-details %}

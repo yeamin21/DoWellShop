@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+
+{% block registration %}
+    <section class="shop login section">
+        <form class="form" method="post">
+            {% csrf_token %}
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-12">
+                        <div class="login-form">
+                            <h2>Register</h2>
+                            <p>Please register in order to checkout more quickly</p>
+                            <!-- Form -->
+                            <form class="form" method="post" action="#">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ form.username.label }}
+                                            {{ form.username }}
+
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ form.first_name.label }}
+                                            {{ form.first_name }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ form.last_name.label }}
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ form.phone.label }}
+                                            {{ form.phone }}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ form.email.label }}
+                                            {{ form.email }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ form.password1.label }}
+                                            {{ form.password1 }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ form.password2.label }}
+                                            {{ form.password2 }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group login-btn">
+                                            <button class="btn" type="submit">Register</button>
+                                            <a href="{% url 'users:login' %}" class="btn">Login</a>
+                                        </div>
+                                        <!--
+                                            <div class="checkbox">
+                                                <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Sign Up for Newsletter</label>
+                                            </div>
+                                        -->
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ End Form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+{% endblock registration %}

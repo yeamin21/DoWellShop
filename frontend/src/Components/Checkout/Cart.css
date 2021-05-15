@@ -1,0 +1,63 @@
+.cart {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.cart-items {
+  margin: 4rem;
+  padding: 2rem;
+
+  box-shadow: 3px 3px 5px 6px rgb(233, 225, 225);
+}
+
+.cart-summary {
+  margin: 0 4rem 0 auto;
+  min-height: 30vh;
+  max-height: 35vh;
+  padding: 2rem;
+  box-shadow: 3px 3px 5px 6px rgb(233, 225, 225);
+}
+
+h4 {
+  color: orange;
+  text-align: left;
+  padding: 1rem;
+}
+h5 {
+  text-align: left;
+  margin: 2rem;
+}
+
+.increment,
+.decrement,
+.remove {
+  cursor: pointer;
+}
+.increment:hover {
+  color: rgb(7, 177, 35);
+}
+.decrement:hover,
+.remove:hover {
+  color: rgb(245, 81, 81);
+}
+
+span {
+  display: inline-block;
+  padding: 1rem;
+}
+
+span:hover {
+  color: red;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .cart {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .cart-items {
+    overflow: scroll;
+    box-shadow: 3px 3px 5px 6px rgb(233, 225, 225);
+  }
+}

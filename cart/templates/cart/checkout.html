@@ -1,0 +1,201 @@
+{% extends 'index.html' %}
+{% load user_templates %}
+{% block checkout %}
+{% add_address %}
+<!-- Start Checkout -->
+<section class="shop checkout section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12">
+                <div id="checkout-form">
+
+                    <table id="checkout-table" class="table shopping-summery text-center">
+                        <h3 style="padding: 0px 0px 10px 0">Order Summary</h3>
+                        <thead>
+                            <tr class="main-hading">
+                                <th class="text-center">Product</th>
+                                <th class="text-center">UNIT PRICE</th>
+                                <th class="text-center">QUANTITY</th>
+                                <th class="text-center">TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody id='checkout-body'>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="col-lg-4 col-12">
+                <div class="order-details">
+                    <!-- Order Widget -->
+                    <div class="single-widget">
+                        <h2>CART TOTALS</h2>
+                        <div class="content">
+                            <ul>
+                                <li>Sub Total<span>$330.00</span></li>
+                                <li>(+) Shipping<span>$10.00</span></li>
+                                <li class="last">Total<span>$340.00</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% if request.user.is_authenticated %}
+                    <div class="single-widget">
+                        <h2>Delivery Address</h2>
+                        <div class="content">
+                            <div class="checkbox">
+                                {% addresses request.user template='users/block_address_list_radio.html'%}
+                            </div>
+
+                        </div>
+                        <a id="addmo">Add Address</a>
+                    </div>
+
+                    <div class="single-widget">
+                        <h2>Payments</h2>
+                        <div class="content">
+                            <div class="checkbox">
+                                <label class="checkbox-inline"><input name="news" id="2" type="checkbox"> Cash
+                                    On Delivery</label>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="single-widget">
+                        <h2>Complete Order Directly From Here</h2>
+                        <div class="content">
+
+                            <form class="form align-content-center" method="post" action="{% url 'cart:test' %}">
+                                {% csrf_token %}
+                                <div class="col-auto">
+                                    <div class="form-group">
+                                        <label>First Name<span>*</span></label>
+                                        <input type="text" name="fname" placeholder="" required="required">
+                                        <label>Last Name<span>*</span></label>
+                                        <input type="text" name="lname" placeholder="" required="required">
+                                        <label>Email Address<span></span></label>
+                                        <input type="email" name="email" placeholder="">
+                                        <label>Phone Number<span>*</span></label>
+                                        <input type="tel" name="number" placeholder="" required="required">
+                                        <div class="form-group">
+                                            <label>Division<span>*</span></label>
+                                            <select name="state-province" id="state-province">
+                                                <option value="divition" selected="selected"></option>
+                                                <option>Dhaka</option>
+                                                <option>Chattogram</option>
+                                                <option>Houston</option>
+                                                <option>San Diego</option>
+                                                <option>Dallas</option>
+                                                <option>Charlotte</option>
+                                            </select>
+                                        </div>
+                                        <label>Address Line 1<span>*</span></label>
+                                        <input type="text" name="address" placeholder="" required="required">
+                                        <label>Address Line 2<span>*</span></label>
+                                        <input type="text" name="address" placeholder="" required="required">
+                                        <label>Postal Code<span>*</span></label>
+                                        <input type="text" name="post" placeholder="" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group create-account">
+                                        <input id="cbox" type="checkbox">
+                                        <label>Create an account?</label>
+                                    </div>
+                                </div>
+                                <input type="submit">
+                            </form>
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    <!--/ End Order Widget -->
+                    <!-- Payment Method Widget -->
+                    <!--/ End Payment Method Widget -->
+                    <!-- Button Widget -->
+                    <div class="single-widget get-button">
+                        <div class="content">
+                            <div class="button">
+                                <a id="checkout-btn" class="btn">proceed to checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ End Button Widget -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="shop-services section home">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Service -->
+                <div class="single-service">
+                    <i class="ti-rocket"></i>
+                    <h4>Free shiping</h4>
+                    <p>Orders over $100</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Service -->
+                <div class="single-service">
+                    <i class="ti-reload"></i>
+                    <h4>Free Return</h4>
+                    <p>Within 30 days returns</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Service -->
+                <div class="single-service">
+                    <i class="ti-lock"></i>
+                    <h4>Sucure Payment</h4>
+                    <p>100% secure payment</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Service -->
+                <div class="single-service">
+                    <i class="ti-tag"></i>
+                    <h4>Best Peice</h4>
+                    <p>Guaranteed price</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Checkout -->
+
+<script>
+    var m = document.getElementById('addAddressModal');
+    var b = document.getElementById('addmo')
+    var closeButton = document.getElementById('modal-close')
+    b.addEventListener('click', function () {
+        m.classList.add('show')
+        m.style.display = 'block';
+
+    })
+    closeButton.onclick = function () {
+        m.style.display = "none";
+    }
+    window.onclick = function (event) {
+        if (event.target == m) {
+            m.style.display = "none";
+        }
+    }
+</script>
+<!-- End Shop Services -->
+{% endblock %}
