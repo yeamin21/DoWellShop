@@ -1,5 +1,5 @@
 # DoWellShop
-![product page](https://ibb.co/JFm9xc7)
+![product page](https://i.ibb.co/prbSW1z/Screenshot-2021-05-10-212318.png)
 ### Step 1: install git and then clone the repository
 
 run in terminal -> ```git clone https://github.com/yeamin21/DoWellShop-1.git``` or directly download the project as zip
