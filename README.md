@@ -1,5 +1,14 @@
 # DoWellShop
+![product page](https://i.ibb.co/prbSW1z/Screenshot-2021-05-10-212318.png)
 
+## DoWellShop is a React, Django ecommerce website under construction.
+![product page after filtering](https://i.ibb.co/2KQFvqC/image.png)
+
+## Tech used: django, DRF, React, sqlite, jwt
+
+
+
+# Installation Guide (*to be updated for react integration):
 ### Step 1: install git and then clone the repository
 
 run in terminal -> ```git clone https://github.com/yeamin21/DoWellShop-1.git``` or directly download the project as zip
