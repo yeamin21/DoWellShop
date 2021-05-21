@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { axiosInstance } from "../../Services/ApiCalls";
 
 export default function ItemDetails(props) {
+  const { id } = props.match.params;
   const [product, setproduct] = useState(props);
 
   useEffect(() => {
     const getDetails = async () => {
       axiosInstance
-        .get(`products/${product.id}/`)
+        .get(`products/${id}/`)
         .then((response) => {
           setproduct(response.data);
         })

@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../Contexts/CartContext";
 import "./SingleItem.css";
 import ReactImageZoom from "react-image-zoom";
+// export default function SingleItem(props) {
+//   return <div>{props.item.name}</div>;
+// }
 export default class SingleItem extends Component {
   static contextType = CartContext;
   constructor(props) {
@@ -34,21 +37,24 @@ export default class SingleItem extends Component {
     }
   }
 
-  componentDidUpdate() {}
   render() {
-    const { id, name, price, image } = this.state.item;
+    const { id, name, price, image, category } = this.state.item;
 
     return (
-      <CartContext.Consumer>
+      <CartContext.Consumer key={id}>
         {({ count, addToCart, removeFromCart }) => (
           <Card key={id} style={this.state.cardStyle}>
-            <Link to={`/products/${id}`}>
-              <Card.Img variant="top" src={image} />
-              <Card.Body>
+            <Card.Img variant="top" src={image} />
+            <Card.Body>
+              <Link to={`/products/${id}`}>
                 <Card.Title>{name}</Card.Title>
-                <Card.Text>Price {price}</Card.Text>
-              </Card.Body>
-            </Link>
+              </Link>
+              <Card.Text>
+                Category: {category ? <span>{category.name}</span> : null}
+              </Card.Text>
+              <Card.Text>Price {price}</Card.Text>
+            </Card.Body>
+
             <Button
               onClick={
                 this.state.inCart

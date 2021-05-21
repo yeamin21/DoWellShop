@@ -20,8 +20,8 @@ export default class UserContextProvider extends Component {
     super(props);
 
     this.state = {
-      access: localStorage.getItem("access") || "",
-      refresh: localStorage.getItem("refresh") || "",
+      access: "",
+      refresh: "",
       username: "",
       authorized: "",
     };
@@ -31,7 +31,9 @@ export default class UserContextProvider extends Component {
   }
 
   componentDidMount() {
-    this.state.access && this.state.refresh && this.retreive();
+    localStorage.getItem("access") &&
+      localStorage.getItem("refresh") &&
+      this.retreive();
   }
 
   signin = async (username, password) => {

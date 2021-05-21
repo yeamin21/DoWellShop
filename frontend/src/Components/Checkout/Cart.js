@@ -14,15 +14,14 @@ import "./Cart.css";
 import Checkout from "./Checkout";
 
 export function Cart() {
-  const { items, removeFromCart, incrementByOne, decrementByOne } = useContext(
-    CartContext
-  );
-  console.log(items);
+  const { items, removeFromCart, incrementByOne, decrementByOne } =
+    useContext(CartContext);
+
   return (
     <div className="cart">
       <div className="cart-items">
         <h4>Your Shopping Cart</h4>
-        <Table striped className="cart-table">
+        <Table striped>
           <thead>
             <tr>
               <th>Product</th>
@@ -43,7 +42,9 @@ export function Cart() {
                     alt={item.name}
                   />
                 </td>
-                <td>{item.name}</td>
+                <td>
+                  <span>{item.name}</span>
+                </td>
                 <td>
                   <span>{item.price}</span>
                 </td>

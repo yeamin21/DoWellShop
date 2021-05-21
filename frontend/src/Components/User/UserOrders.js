@@ -33,7 +33,7 @@ export default class UserOrders extends Component {
               <tr key={index}>
                 <td> {order.id} </td>
                 <td> {order.delivery_address.address_line1} </td>
-                {order.is_ordered ? <td> Y </td> : <td>N</td>}
+                {order.is_ordered ? <td> Ordered </td> : <td>N</td>}
                 <td>
                   <span>
                     <FaWrench />

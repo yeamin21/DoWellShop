@@ -1,23 +1,25 @@
-.category-list {
-  grid-column: 0/1;
+.box-list {
   padding: 1rem;
+  width: 90%;
   margin: 1rem;
   display: flex;
   flex-direction: column;
-  background: rgb(233, 231, 231);
+  background: rgba(233, 231, 231, 0.897);
   border-radius: 1rem;
   justify-content: space-evenly;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-.category-list .category a {
+.box-list span {
+  padding: 0;
   color: black;
   cursor: pointer;
   text-decoration: none;
 }
-.category a:hover {
+.box-list a:hover {
+  text-decoration: none;
   color: orange;
 }
-.category-list h4 {
+.box-list h4 {
   border-bottom: 1px solid rgba(37, 36, 36, 0.185);
   color: rgba(37, 36, 36, 0.7);
 }

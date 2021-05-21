@@ -1,3 +1,4 @@
+from products.templatetags.product_templatetags import manufacturers
 from django.db.models import query
 from rest_framework import filters
 from rest_framework.generics import ListAPIView, CreateAPIView
@@ -26,6 +27,12 @@ class ProductFilterBackend(BaseFilterBackend):
         price_max = request.query_params.get('price_max', None)
         if price_max:
             filters['price__lte'] = price_max
+        category = request.query_params.get('category', None)
+        if category:
+            filters['category__name'] = category
+        manufacturer = request.query_params.get('manufacturer')
+        if manufacturer:
+            filters['manufacturer__name'] = manufacturer
         queryset = queryset.filter(**filters)
         return queryset
 
@@ -37,11 +44,13 @@ class ProductAPIViewset(ModelViewSet):
     queryset = Product.objects.all()
     filter_backends = [ProductFilterBackend, SearchFilter]
     search_fields = ['name']
+
     # def get_queryset(self):
-    #     name = self.request.query_params.get('price_min')
-    #     if name:
-    #         self.queryset = self.queryset.filter(price__gte=name)
-    #     return self.queryset
+    #     category = self.request.query_params.get('category')
+    #     if category:
+    #         self.queryset = self.queryset.filter(
+    #             category=Category.objects.get(name='category'))
+    #     return super().get_queryset()
 
 
 class CategoryAPIViewset(ModelViewSet):

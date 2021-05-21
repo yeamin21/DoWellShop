@@ -17,10 +17,10 @@ async function getConfig() {
   const token = await localStorage.getItem("access");
 }
 
-export const retrieve = async (param) => {
+export const retrieve = async (param, params = null) => {
   return await new Promise((resolve, reject) => {
     axiosInstance
-      .get(param)
+      .get(param, params)
       .then((response) => resolve(response.data))
       .catch((error) => reject(error));
   });

@@ -1,4 +1,9 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  useRouteMatch,
+  withRouter,
+} from "react-router-dom";
 import "./App.css";
 import Items from "./Components/Product/Items";
 import Top from "./Components/Top/Top";
@@ -12,41 +17,24 @@ import Register from "./Components/User/Register";
 import ItemDetails from "./Components/Product/ItemDetails";
 import Home from "./Components/Product/Home";
 import { useState } from "react";
+import ItemList from "./Components/Product/ItemList";
 
 export default function App() {
-  return <Customer></Customer>;
-}
-
-function Customer() {
-  const [query, setquery] = useState("Keyboard");
   return (
     <BrowserRouter>
-      <CartContextProvider>
-        <UserContextProvider>
+      <UserContextProvider>
+        <CartContextProvider>
           <Top />
           <Route path="/" exact component={Home} />
-          <Route
-            path="/products"
-            exact
-            // render={() => {
-            //   return <Items query={query}></Items>;
-            // }}
-            component={Items}
-          />
+          <Route path="/products" exact component={Items} />
           <Route path="/cart" component={Cart} />
-          <Route
-            path="/products/:id"
-            render={(props) => {
-              let cardId = props.location.pathname.replace("/products/", "");
-              return <ItemDetails id={cardId}></ItemDetails>;
-            }}
-          ></Route>
+          <Route path="/products/:id" exact component={ItemDetails}></Route>
           <Route path="/checkout" component={Checkout}></Route>
-          <Route path="/login" component={Login}></Route>
-          <Route path="/register" component={Register}></Route>
-          <Route path="/user" component={UserPanel}></Route>
-        </UserContextProvider>
-      </CartContextProvider>
+        </CartContextProvider>
+        <Route path="/login" component={Login}></Route>
+        <Route path="/register" component={Register}></Route>
+        <Route path="/user" component={UserPanel}></Route>
+      </UserContextProvider>
     </BrowserRouter>
   );
 }

@@ -37,7 +37,7 @@ function PrimaryNav() {
   return (
     <div className="nav-primary">
       {navItems.map((item, index) => (
-        <NavLink key={index} to={item.link} exact>
+        <NavLink key={index} to={{ pathname: item.link }} exact>
           {item.name}
         </NavLink>
       ))}
@@ -45,10 +45,6 @@ function PrimaryNav() {
   );
 }
 
-function Xxx(props) {
-  const [p, setp] = useState(props.xe);
-  return <div>{p}</div>;
-}
 export function UserMenu() {
   return (
     <div className="nav-user">

@@ -1,0 +1,21 @@
+.filters {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filters input[type="number"] {
+  width: 5rem;
+}
+
+.filters .apply {
+  padding: 0;
+  height: 2rem;
+  margin-top: auto;
+  margin-left: 5px;
+}
+.filters .apply:hover {
+  color: #1abc9c;
+  cursor: pointer;
+}

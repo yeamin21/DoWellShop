@@ -1,29 +1,30 @@
 .cart {
-  display: grid;
-  grid-template-rows: 1fr;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .cart-items {
+  flex: 5;
   margin: 4rem;
   padding: 2rem;
-
   box-shadow: 3px 3px 5px 6px rgb(233, 225, 225);
 }
 
 .cart-summary {
-  margin: 0 4rem 0 auto;
+  flex: 1;
+  margin: 4rem;
   min-height: 30vh;
-  max-height: 35vh;
+  max-height: 45vh;
   padding: 2rem;
   box-shadow: 3px 3px 5px 6px rgb(233, 225, 225);
 }
 
-h4 {
+.cart h4 {
   color: orange;
   text-align: left;
   padding: 1rem;
 }
-h5 {
+.cart h5 {
   text-align: left;
   margin: 2rem;
 }
@@ -47,7 +48,7 @@ span {
 }
 
 span:hover {
-  color: red;
+  color: rgb(224, 85, 85);
   cursor: pointer;
 }
 

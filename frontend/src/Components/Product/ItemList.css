@@ -1,6 +1,38 @@
 .products {
   display: grid;
-  padding: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 280px));
+  grid-gap: 25px;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.active-filter {
+  display: inline-flex;
+  position: relative;
+  padding: 0.25rem;
+  min-width: fit-content;
+  border-radius: 2.5em;
+  margin: 4px;
+  background-color: rgb(233, 231, 231);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+.active-filter .close {
+  display: block;
+  text-align: center;
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  color: white;
+  border-radius: 50%;
+  font-weight: lighter;
+  background: rgb(41, 41, 41);
+}
+.active-filter .close:hover {
+  background: rgb(245, 81, 81);
+}
+.active-filter .item {
+  text-align: center;
+  color: rgb(110, 103, 103);
+  padding: 2px;
 }

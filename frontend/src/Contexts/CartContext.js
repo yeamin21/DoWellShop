@@ -3,6 +3,7 @@ import { Component } from "react";
 export const CartContext = createContext({
   count: 0,
   items: [],
+  subTotal: 0,
   addToCart: () => {},
   removeFromCart: () => {},
   incrementByOne: () => {},

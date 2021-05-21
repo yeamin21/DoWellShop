@@ -12,7 +12,7 @@ export default function CartModal(props) {
           <div style={{ width: "40px", height: "50px" }}>{item.name}</div>
         ))
       ) : (
-        <h1>NOOOOOOO</h1>
+        <strong>No Product in cart</strong>
       )}
       <div>
         <Link to="/cart/">

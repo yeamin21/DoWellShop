@@ -27,7 +27,6 @@ class OrderAPIViewset(ModelViewSet):
         for item in orderItems:
             nd.append({'product': item['id'], 'quantity': item['quantity'],
                        'unit_price': item['price']})
-
         new_order = self.get_serializer(
             data={'user': request.user.id, 'delivery_address': request.data['delivery_address'], 'orderItem': nd})
         if new_order.is_valid():

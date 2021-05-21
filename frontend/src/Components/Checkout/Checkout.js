@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { CartContext } from "../../Contexts/CartContext";
 import "./Checkout.css";
+import "./Cart.css";
 import { Table, Button, Form } from "react-bootstrap";
 import { axiosInstance, retrieve } from "../../Services/ApiCalls";
 import { Redirect } from "react-router";
@@ -49,34 +50,36 @@ export default class Checkout extends Component {
     } else {
       return (
         <div className="checkout">
-          <Table striped className="cart-table">
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Name</th>
-                <th>Unit Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {items.map((item) => (
+          <div className="cart-items">
+            <Table striped>
+              <thead>
                 <tr>
-                  <td>
-                    <img
-                      style={{ width: "50px", height: "40px" }}
-                      src={item.image}
-                      alt={item.name}
-                    />
-                  </td>
-                  <td>{item.name}</td>
-                  <td>{item.price}</td>
-                  <td>{item.quantity}</td>
-                  <td>{parseFloat(item.quantity * item.price).toFixed(2)}</td>
+                  <th>Product</th>
+                  <th>Name</th>
+                  <th>Unit Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {items.map((item) => (
+                  <tr>
+                    <td>
+                      <img
+                        style={{ width: "50px", height: "40px" }}
+                        src={item.image}
+                        alt={item.name}
+                      />
+                    </td>
+                    <td>{item.name}</td>
+                    <td>{item.price}</td>
+                    <td>{item.quantity}</td>
+                    <td>{parseFloat(item.quantity * item.price).toFixed(2)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
 
           <div>
             <Form.Group>

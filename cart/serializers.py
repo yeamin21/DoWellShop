@@ -16,7 +16,7 @@ class OrderItemSerializer(ModelSerializer):
 
     class Meta:
         model = OrderItem
-        fields = ['product', 'quantity', 'unit_price']
+        fields = ['id', 'product', 'quantity', 'unit_price']
         permission_classes = [IsAuthenticated]
 
 
@@ -29,6 +29,10 @@ class OrderSerializer(ModelSerializer):
         model = Order
         fields = ['id', 'orderItem', 'delivery_address', 'user', 'is_ordered']
         permission_classes = [IsAuthenticated]
+
+    def create(self, validated_data):
+        print(validated_data)
+        return super().create(validated_data)
 
     def create(self, validated_data):
 
