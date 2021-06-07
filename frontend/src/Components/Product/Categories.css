@@ -15,6 +15,11 @@
   cursor: pointer;
   text-decoration: none;
 }
+.box-list span ::after {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
 .box-list a:hover {
   text-decoration: none;
   color: orange;
@@ -22,4 +27,5 @@
 .box-list h4 {
   border-bottom: 1px solid rgba(37, 36, 36, 0.185);
   color: rgba(37, 36, 36, 0.7);
+  position: relative;
 }

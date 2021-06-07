@@ -37,6 +37,7 @@ router.register(r'order', OrderAPIViewset, basename='user-order')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     # path('', include('products.urls')),
     # path('account/', include('users.urls')),
     # path('cart/', include('cart.urls')),
@@ -45,8 +46,9 @@ urlpatterns = [
          name='token_obtain_pair'),
     path('api/token/refresh/',
          jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    # re_path(r'^(?P<path>.*)$', serve,
-    #         {"document_root": settings.FRONTEND_ROOT})
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += re_path(r'^.*',
+                       base.TemplateView.as_view(template_name='index.html')),

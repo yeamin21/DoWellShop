@@ -14,7 +14,7 @@ export default class ManufacturerList extends Component {
   }
 
   componentDidMount() {
-    retrieve("/manufacturers/").then((data) => this.setState({ list: data }));
+    retrieve("manufacturers/").then((data) => this.setState({ list: data }));
   }
   handleChange = (e) => this.props.handleManufacturerChange(e);
 

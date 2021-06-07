@@ -1,18 +1,27 @@
 import "./Items.css";
-import { useState } from "react";
+import { useState, useEffect, Component } from "react";
 import { Form } from "react-bootstrap";
 import "./Filters.css";
 import { FaArrowRight } from "react-icons/fa";
-
+import InputRange from "react-input-range";
+import "react-input-range/lib/css/index.css";
 export function PriceFilter(props) {
   const [min, setmin] = useState(props.price_min);
   const [max, setmax] = useState(props.price_max);
+  useEffect(() => {
+    setmin(props.price_min);
+  }, [props.price_min]);
+  useEffect(() => {
+    setmax(props.price_max);
+  }, [props.price_max]);
+
   const apply = () => {
     props.handleMaxChange(max);
     props.handleMinChange(min);
   };
   return (
     <div className="box-list">
+      <h1>{props.price_max}</h1>
       <h4>Filters</h4>
       <div className="filters">
         <Form.Label>Price</Form.Label>
@@ -39,4 +48,30 @@ export function PriceFilter(props) {
       </div>
     </div>
   );
+}
+
+export class CompoundPriceFilter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: { min: 2, max: 10 },
+    };
+  }
+
+  render() {
+    return (
+      <div classNames="list-box">
+        <Form>
+          <InputRange
+            maxValue={20}
+            minValue={0}
+            value={this.state.value}
+            onChange={(value) => this.setState({ value })}
+            onChangeComplete={(value) => console.log(value)}
+          />
+        </Form>
+      </div>
+    );
+  }
 }

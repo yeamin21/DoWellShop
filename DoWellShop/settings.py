@@ -25,7 +25,7 @@ SECRET_KEY = 'e@#t)j9qir^+_a(155qkgn6rdfps4dz##yf5#=a&hnk3(8z!wx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.101", '10.45.42.227']
+ALLOWED_HOSTS = ["192.168.0.101", '10.45.42.227', 'localhost']
 
 # Application definition
 
@@ -56,11 +56,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'DoWellShop.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend', 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,21 +127,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = '/'
+# FRONTEND_ROOT = os.path.abspath(
+#     os.path.join(BASE_DIR, '.', 'frontend', 'build'))
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend', 'build', 'static')]
 
-FRONTEND_ROOT = os.path.abspath(
-    os.path.join(BASE_DIR, '.', 'frontend', 'build'))
-
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://192.168.0.101:3000", "http://192.168.0.101:5000",
-]
+#
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:3000',
+# )
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+# ]
+CORS_URLS_REGEX = r'^/api.*'
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),

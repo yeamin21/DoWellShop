@@ -1,4 +1,5 @@
 import { Component, useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { CartContext } from "../../Contexts/CartContext";
 import { axiosInstance, retrieve } from "../../Services/ApiCalls";
 import "./ItemList.css";
@@ -13,6 +14,7 @@ export default class ItemList extends Component {
     this.state = {
       list: [],
       query: props.query,
+      isLoaded: false,
     };
     this.ret = this.ret.bind(this);
     this.removeSearch = this.removeSearch.bind(this);
@@ -26,10 +28,11 @@ export default class ItemList extends Component {
 
   ret = () => {
     axiosInstance
-      .get("/products/", { params: this.state.query })
+      .get("http://localhost:8000/api/products/", { params: this.state.query })
       .then((response) => {
         this.setState({ list: response.data, count: response.data.length });
-      });
+      })
+      .then(this.setState({ isLoaded: true }));
   };
   componentDidUpdate(prevProps, prevState) {
     this.props.query !== prevProps.query &&
@@ -40,14 +43,15 @@ export default class ItemList extends Component {
     this.state.query !== prevState.query && this.ret();
   }
 
-  removeSearch = () => this.props.handleChange(undefined);
-  removeMin = () => this.props.handleMinChange(undefined);
-  removeMax = () => this.props.handleMaxChange(undefined);
+  removeSearch = () => this.props.handleChange("");
+  removeMin = () => this.props.handleMinChange("");
+  removeMax = () => this.props.handleMaxChange("");
   remvoeCategory = () => this.props.handleCategoryChange(undefined);
   remvoeManufacturer = () => this.props.handleManufacturerChange(undefined);
   render() {
     const { search, price_max, price_min, category, manufacturer } =
       this.state.query;
+    const { isLoaded } = this.state;
     return (
       <>
         <>
@@ -86,11 +90,17 @@ export default class ItemList extends Component {
             )}
           </div>
         </>
-        <div className="products">
-          {this.state.list.map((item, index) => (
-            <SingleItem key={item.id} item={item} />
-          ))}
-        </div>
+        {isLoaded ? (
+          <div className="products">
+            {this.state.list.map((item, index) => (
+              <SingleItem key={item.id} item={item} />
+            ))}
+          </div>
+        ) : (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
       </>
     );
   }

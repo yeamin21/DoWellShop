@@ -8,7 +8,7 @@ import { matchPath, useLocation } from "react-router-dom";
 import { Component } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import queryString from "query-string";
-import { PriceFilter } from "./Filters";
+import { CompoundPriceFilter, PriceFilter } from "./Filters";
 
 export default class Items extends Component {
   constructor(props) {
@@ -24,7 +24,6 @@ export default class Items extends Component {
         price_max,
       },
     };
-    console.log(this.state);
 
     this.handleChange = this.handleChange.bind(this);
     this.handleMinChange = this.handleMinChange.bind(this);
@@ -60,8 +59,9 @@ export default class Items extends Component {
       query: { ...prevState.query, manufacturer: e },
     }));
   };
+
   render() {
-    const { price_min, price_max } = this.state.query;
+    const { price_min, price_max, search } = this.state.query;
     return (
       <div className="wrapper">
         <div className="back"></div>
@@ -72,13 +72,14 @@ export default class Items extends Component {
             handleMinChange={this.handleMinChange}
             handleMaxChange={this.handleMaxChange}
           />
+          {/* <CompoundPriceFilter></CompoundPriceFilter> */}
           <CategoryList handleCategoryChange={this.handleCategoryChange} />
           <ManufacturerList
             handleManufacturerChange={this.handleManufacturerChange}
           />
         </div>
         <div className="products-n-search">
-          <Search handleChange={this.handleChange}></Search>
+          <Search search={search} handleChange={this.handleChange}></Search>
           <ItemList
             query={this.state.query}
             handleChange={this.handleChange}
@@ -94,13 +95,17 @@ export default class Items extends Component {
 }
 
 export function Search(props) {
-  const [search, setsearch] = useState();
+  const [search, setsearch] = useState(props.search);
+  useEffect(() => {
+    setsearch(props.search);
+  }, [props.search]);
   useEffect(() => {
     props.handleChange(search);
   }, [search]);
   return (
     <div className="search">
       <Form.Control
+        value={search}
         type="search"
         onChange={(e) => {
           setsearch(e.target.value);

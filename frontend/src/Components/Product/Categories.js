@@ -13,7 +13,7 @@ export default class CategoryList extends Component {
   }
 
   componentDidMount() {
-    retrieve("/categories/").then((data) => this.setState({ list: data }));
+    retrieve("categories/").then((data) => this.setState({ list: data }));
   }
   handleChange = (e) => this.props.handleCategoryChange(e);
   render() {

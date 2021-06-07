@@ -1,6 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./NavigationMenu.css";
-import { NavLink, Redirect } from "react-router-dom";
+import {
+  NavLink,
+  Redirect,
+  useHistory,
+  useLocation,
+  useRouteMatch,
+} from "react-router-dom";
 import { CartContext } from "../../Contexts/CartContext";
 import {
   FaShoppingCart,
@@ -13,13 +19,14 @@ import CartModal from "../Checkout/CartModal";
 import Items from "../Product/Items";
 import ItemList from "../Product/ItemList";
 
-export default function NavigationMenu() {
+export default function NavigationMenu(props) {
+  const { pathname } = useLocation();
+  console.log(useHistory());
   return (
     <div className="nav-menu">
       <PrimaryNav />
-
       <div className="nav-user-cart">
-        <UserMenu />
+        <UserMenu location={pathname} />
         <CartMenu />
       </div>
     </div>
@@ -45,21 +52,23 @@ function PrimaryNav() {
   );
 }
 
-export function UserMenu() {
+export function UserMenu(props) {
   return (
     <div className="nav-user">
       <UserContext.Consumer>
         {({ authorized, username, signout }) =>
           authorized ? (
             <>
-              <NavLink to="/user">
+              <NavLink to={{ pathname: "/user" }}>
                 <FaUserAlt />
                 <span>{username}</span>
               </NavLink>
               <FaSignOutAlt className="faicon" onClick={signout}></FaSignOutAlt>
             </>
           ) : (
-            <NavLink to="/login">
+            <NavLink
+              to={{ pathname: "/login", search: `next=${props.location}` }}
+            >
               <FaSignInAlt />
             </NavLink>
           )
