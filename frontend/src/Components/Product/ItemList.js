@@ -28,7 +28,7 @@ export default class ItemList extends Component {
 
   ret = () => {
     axiosInstance
-      .get("http://localhost:8000/api/products/", { params: this.state.query })
+      .get("/products/", { params: this.state.query })
       .then((response) => {
         this.setState({ list: response.data, count: response.data.length });
       })
