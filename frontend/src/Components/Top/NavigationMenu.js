@@ -21,7 +21,6 @@ import ItemList from "../Product/ItemList";
 
 export default function NavigationMenu(props) {
   const { pathname } = useLocation();
-  console.log(useHistory());
   return (
     <div className="nav-menu">
       <PrimaryNav />

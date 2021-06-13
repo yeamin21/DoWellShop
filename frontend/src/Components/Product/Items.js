@@ -13,6 +13,7 @@ import { CompoundPriceFilter, PriceFilter } from "./Filters";
 export default class Items extends Component {
   constructor(props) {
     super(props);
+    console.log(props, "here");
     const { category, manufacturer, search, price_min, price_max } =
       queryString.parse(props.location.search);
     this.state = {

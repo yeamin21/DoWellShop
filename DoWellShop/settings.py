@@ -141,10 +141,10 @@ LOGIN_REDIRECT_URL = '/'
 # CORS_ORIGIN_WHITELIST = (
 #     'http://localhost:3000',
 # )
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-]
-CORS_URLS_REGEX = r'^/api.*'
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+# ]
+# CORS_URLS_REGEX = r'^/api.*'
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),

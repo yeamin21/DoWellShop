@@ -15,9 +15,10 @@ import UserPanel from "./Components/User/UserPanel";
 import Login from "./Components/User/Login";
 import Register from "./Components/User/Register";
 import ItemDetails from "./Components/Product/ItemDetails";
-import Home from "./Components/Product/Home";
+import Home from "./Pages/Home";
 import { useState } from "react";
 import ItemList from "./Components/Product/ItemList";
+import Products from "./Pages/Products";
 
 export default function App() {
   return (

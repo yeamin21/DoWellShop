@@ -51,7 +51,10 @@ class Product(models.Model):
 
 
 class ProductDetails(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.OneToOneField(
+        Product, related_name='product_details', on_delete=models.CASCADE)
+    is_featured = models.BooleanField(default=False)
+    count_views = models.BigIntegerField(default=0)
 
 
 '''class ProductImage(models.Model):

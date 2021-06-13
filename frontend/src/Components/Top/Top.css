@@ -2,6 +2,11 @@
   display: grid;
   grid-template-rows: minmax(100px, auto) auto;
 }
+.top h1 {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(49, 212, 136);
+  text-transform: uppercase;
+}
 
 /* .nav-menu {
   background-color: rgba(0, 0, 0, 0.979);
