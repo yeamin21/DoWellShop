@@ -50,9 +50,10 @@ axiosInstance.interceptors.response.use(
     //Prevent infinite loops
     if (
       error.response.status === 401 &&
-      originalRequest.url === baseurl + "/token/refresh/"
+      // originalRequest.url === baseurl + "/token/refresh/"
+      originalRequest.url === "api/token/refresh/"
     ) {
-      window.location.href = "/login/";
+      window.location.href = "login/";
       return Promise.reject(error);
     }
 
@@ -69,7 +70,7 @@ axiosInstance.interceptors.response.use(
         const now = Math.ceil(Date.now() / 1000);
         if (tokenParts.exp > now) {
           return axiosInstance
-            .post("/token/refresh/", { refresh: refreshToken })
+            .post("token/refresh/", { refresh: refreshToken })
             .then((response) => {
               localStorage.setItem("access", response.data.access);
               axiosInstance.defaults.headers["Authorization"] =
@@ -83,11 +84,11 @@ axiosInstance.interceptors.response.use(
             });
         } else {
           console.log("Refresh token is expired", tokenParts.exp, now);
-          window.location.href = "/login/";
+          window.location.href = "login/";
         }
       } else {
         console.log("Refresh token not available.");
-        window.location.href = "/login/";
+        window.location.href = "login/";
       }
     }
 

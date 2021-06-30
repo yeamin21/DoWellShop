@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 
 class Manufacturer(models.Model):
@@ -55,6 +57,11 @@ class ProductDetails(models.Model):
         Product, related_name='product_details', on_delete=models.CASCADE)
     is_featured = models.BooleanField(default=False)
     count_views = models.BigIntegerField(default=0)
+
+
+@receiver(pre_save, sender=Product)
+def product_post_save_receiver(sender, **kwargs):
+    print(sender, **kwargs)
 
 
 '''class ProductImage(models.Model):

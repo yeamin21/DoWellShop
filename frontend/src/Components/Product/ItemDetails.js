@@ -8,7 +8,7 @@ export default function ItemDetails(props) {
   useEffect(() => {
     const getDetails = async () => {
       axiosInstance
-        .get(`products/${id}/`)
+        .get(`/products/${id}/`)
         .then((response) => {
           setproduct(response.data);
         })

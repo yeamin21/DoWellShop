@@ -21,6 +21,7 @@ export default class CartContextProvider extends Component {
         items: [...this.state.items, product],
       });
     };
+
     this.removeFromCart = (product) => {
       this.setState({
         count: this.state.count - 1,
@@ -47,7 +48,6 @@ export default class CartContextProvider extends Component {
           items: [],
         },
         () => {
-          console.log("trigerred");
           localStorage.removeItem("cart");
         }
       );

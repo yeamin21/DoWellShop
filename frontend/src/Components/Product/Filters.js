@@ -21,7 +21,6 @@ export function PriceFilter(props) {
   };
   return (
     <div className="box-list">
-      <h1>{props.price_max}</h1>
       <h4>Filters</h4>
       <div className="filters">
         <Form.Label>Price</Form.Label>
@@ -49,7 +48,7 @@ export function PriceFilter(props) {
     </div>
   );
 }
-
+//TODO: add compound price filter
 export class CompoundPriceFilter extends Component {
   constructor(props) {
     super(props);

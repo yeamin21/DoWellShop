@@ -28,7 +28,7 @@ export default class ItemList extends Component {
 
   ret = () => {
     axiosInstance
-      .get("/products/", { params: this.state.query })
+      .get("products/", { params: this.state.query })
       .then((response) => {
         this.setState({ list: response.data, count: response.data.length });
       })
@@ -93,7 +93,7 @@ export default class ItemList extends Component {
         {isLoaded ? (
           <div className="products">
             {this.state.list.map((item, index) => (
-              <SingleItem key={item.id} item={item} />
+              <SingleItem addToCart={true} key={item.id} item={item} />
             ))}
           </div>
         ) : (
