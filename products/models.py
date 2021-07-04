@@ -59,9 +59,9 @@ class ProductDetails(models.Model):
     count_views = models.BigIntegerField(default=0)
 
 
-@receiver(pre_save, sender=Product)
-def product_post_save_receiver(sender, **kwargs):
-    print(sender, **kwargs)
+# @receiver(pre_save, sender=Product)
+# def product_post_save_receiver(sender, **kwargs):
+#     print(sender, **kwargs)
 
 
 '''class ProductImage(models.Model):

@@ -25,7 +25,8 @@ SECRET_KEY = 'e@#t)j9qir^+_a(155qkgn6rdfps4dz##yf5#=a&hnk3(8z!wx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.101", '10.45.42.227', 'localhost']
+ALLOWED_HOSTS = ["192.168.0.101", '10.45.42.227',
+                 'localhost', 'shop.dowellit.xyz']
 
 # Application definition
 
