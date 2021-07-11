@@ -1,2 +1,2 @@
 web: gunicorn DoWellShop.wsgi
-release: ./release.sh
+release: chmod +x release.sh && ./release.sh
