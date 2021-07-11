@@ -1,2 +1,2 @@
 web: gunicorn DoWellShop.wsgi
-release: chmod +x release.sh && ./release.sh
+release: python manage.py migrate
