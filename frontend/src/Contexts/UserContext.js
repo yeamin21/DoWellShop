@@ -3,7 +3,6 @@ import { Component } from "react";
 import { createContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { axiosInstance } from "../Services/ApiCalls";
-import jwt_decode from "jwt-decode";
 
 export const UserContext = createContext({
   username: "",

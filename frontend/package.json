@@ -16,7 +16,6 @@
     "bootstrap-icons": "^1.4.0",
     "create-react-class": "^15.7.0",
     "jquery": "^3.6.0",
-    "jwt-decode": "^3.1.2",
     "node-sass": "^4.14.1",
     "nouislider": "^15.1.1",
     "popper.js": "^1.16.1",
