@@ -4,7 +4,7 @@ import {
   useRouteMatch,
   withRouter,
 } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import Items from "./Components/Product/Items";
 import Top from "./Components/Top/Top";
 import { Cart } from "./Components/Checkout/Cart";
@@ -22,6 +22,15 @@ import Products from "./Pages/Products";
 
 export default function App() {
   return (
+    <div className="app">
+      <Body></Body>
+      <Footer></Footer>
+    </div>
+  );
+}
+
+function Body() {
+  return (
     <BrowserRouter>
       <UserContextProvider>
         <CartContextProvider>
@@ -38,4 +47,8 @@ export default function App() {
       </UserContextProvider>
     </BrowserRouter>
   );
+}
+
+function Footer() {
+  return <footer>This is a footer</footer>;
 }

@@ -1,10 +1,11 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  height: fit-content;
   background: black;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 3.5rem;
+  width: 100vw;
+  padding: 0 2rem 0 2rem;
 }
 
 .nav-menu a {

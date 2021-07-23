@@ -1,0 +1,20 @@
+.item-details {
+  display: flex;
+  flex-direction: row;
+  margin: 3rem;
+  .image-main {
+    width: 40rem;
+    height: 40rem;
+    margin: inherit;
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .detail-basic {
+    display: flex;
+    flex-direction: column;
+    margin: inherit;
+  }
+}

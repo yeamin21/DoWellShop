@@ -15,11 +15,18 @@ export default class CartContextProvider extends Component {
   constructor(props) {
     super(props);
     this.addToCart = (product) => {
-      product.quantity = 1;
-      this.setState({
-        count: this.state.count + 1,
-        items: [...this.state.items, product],
-      });
+      var x = this.state.items.findIndex((item) => item.id === product.id);
+      console.log(x);
+      if (x !== -1) {
+        this.state.items[x].quantity += 1;
+        this.setState({ items: this.state.items });
+      } else {
+        product.quantity = 1;
+        this.setState({
+          count: this.state.count + 1,
+          items: [...this.state.items, product],
+        });
+      }
     };
 
     this.removeFromCart = (product) => {

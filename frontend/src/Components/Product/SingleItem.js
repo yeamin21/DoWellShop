@@ -12,6 +12,8 @@ export default class SingleItem extends Component {
       item: props.item,
       cardStyle: {
         padding: ".5rem",
+        width: "100%",
+        height: "100%",
         borderRadius: ".7rem",
         background: "rgba(246,246,246,0.5)",
         boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
