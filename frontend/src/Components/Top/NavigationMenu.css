@@ -82,11 +82,3 @@
 .search input {
   width: 20vw;
 }
-@media only screen and (max-width: 800px) {
-  .nav-menu {
-    background-color: lightblue;
-  }
-  .nav-primary {
-    display: none;
-  }
-}

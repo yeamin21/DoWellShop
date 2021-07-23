@@ -22,7 +22,9 @@ export default class UserContextProvider extends Component {
       access: "",
       refresh: "",
       username: "",
-      authorized: "",
+      authorized: false,
+      signin: this.signin,
+      signout: this.signout,
     };
 
     this.signout = this.signout.bind(this);
@@ -84,17 +86,8 @@ export default class UserContextProvider extends Component {
     // });
   };
   render() {
-    const { username, access, refresh, authorized } = this.state;
-    const value = {
-      username,
-      access,
-      refresh,
-      authorized,
-      signout: this.signout,
-      signin: this.signin,
-    };
     return (
-      <UserContext.Provider value={value}>
+      <UserContext.Provider value={this.state}>
         {this.props.children}
       </UserContext.Provider>
     );

@@ -5,6 +5,20 @@ import "./Cart.css";
 import { Table, Button, Form } from "react-bootstrap";
 import { axiosInstance, retrieve } from "../../Services/ApiCalls";
 import { Redirect } from "react-router";
+// class Addresses extends Component {
+//   static contextType = UserContext;
+//   constructor(props) {
+//     super(props);
+//     this.state = { addresses: [] };
+//   }
+//   componentDidMount() {
+//     retrieve("/addresses/").then((data) => this.setState({ addresses: data }));
+//   }
+
+//   render() {
+//     return this.state.addresses.map((item) => item.address_line1);
+//   }
+// }
 
 export default class Checkout extends Component {
   static contextType = CartContext;
@@ -12,7 +26,6 @@ export default class Checkout extends Component {
     super(props);
     this.state = {
       items: [],
-      addresses: [],
       delivery_address: "",
       success: false,
     };
@@ -21,7 +34,6 @@ export default class Checkout extends Component {
   }
   componentDidMount() {
     this.setState({ items: this.context.items });
-    retrieve("/addresses/").then((data) => this.setState({ addresses: data }));
   }
   componentDidUpdate(prevProps, prevState) {
     if (this.state.items !== prevState.items) {
@@ -44,7 +56,7 @@ export default class Checkout extends Component {
       .catch((e) => console.log(e));
   };
   render() {
-    const { items, success, addresses } = this.state;
+    const { items, success } = this.state;
     if (success) {
       return <Redirect to="/"></Redirect>;
     } else {
@@ -80,21 +92,7 @@ export default class Checkout extends Component {
               </tbody>
             </Table>
           </div>
-
           <div>
-            <Form.Group>
-              {addresses.map((address, index) => (
-                <Form.Check
-                  key={index}
-                  type="radio"
-                  name="address"
-                  onChange={this.handleChange}
-                  label={`${address.address_line1} ${address.address_line2} `}
-                  value={address.id}
-                ></Form.Check>
-              ))}
-            </Form.Group>
-
             <Button type="submit" onClick={this.Checkout}>
               Checkout
             </Button>
