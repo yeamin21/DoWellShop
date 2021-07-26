@@ -14,7 +14,7 @@ import "./Cart.css";
 import Checkout from "./Checkout";
 
 export function Cart() {
-  const { items, removeFromCart, incrementByOne, decrementByOne } =
+  const { items, removeFromCart, addToCart, subTotal, decrementByOne } =
     useContext(CartContext);
 
   return (
@@ -56,10 +56,7 @@ export function Cart() {
                     <FaMinusCircle />
                   </span>
                   <span>{item.quantity}</span>
-                  <span
-                    className="increment"
-                    onClick={() => incrementByOne(item)}
-                  >
+                  <span className="increment" onClick={() => addToCart(item)}>
                     <FaPlusCircle />
                   </span>
                 </td>
@@ -69,10 +66,7 @@ export function Cart() {
                   </span>
                 </td>
                 <td>
-                  <span
-                    className="remove"
-                    onClick={(_) => removeFromCart(item)}
-                  >
+                  <span className="remove" onClick={() => removeFromCart(item)}>
                     <FaRegTrashAlt />
                   </span>
                 </td>
@@ -86,7 +80,7 @@ export function Cart() {
         <Card.Header>Summary</Card.Header>
         <ListGroup variant="flush">
           <ListGroup.Item>
-            Sub Total: <span>0</span>
+            Sub Total: <span>{subTotal}</span>
           </ListGroup.Item>
           <ListGroup.Item>
             Delivery Charge: <span>0</span>
