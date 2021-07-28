@@ -73,9 +73,11 @@ export default class CartContextProvider extends Component {
     const x = this.state.items.findIndex(({ id }) => id === product.id);
     const newItems = [...this.state.items];
     newItems[x].quantity--;
-    this.state.items[x].quantity === 0
+
+    console.log(newItems[x].quantity);
+    newItems[x].quantity === 0
       ? this.removeFromCart(product)
-      : this.setState({ items: this.state.items });
+      : this.setState({ items: newItems });
   };
 
   clearCart = () => {

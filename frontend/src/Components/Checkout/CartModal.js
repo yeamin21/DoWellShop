@@ -5,7 +5,8 @@ import { CartContext } from "../../Contexts/CartContext";
 import { Button } from "react-bootstrap";
 export default function CartModal(props) {
   const { items } = useContext(CartContext);
-  const x = () => window.addEventListener("click", (e) => console.log(e));
+  const x = () =>
+    window.addEventListener("click", (e) => console.log(e.target));
   x();
   return (
     <div className="cartModal">
@@ -19,10 +20,9 @@ export default function CartModal(props) {
             </div>
           ))
         ) : (
-          <strong>No Product in cart</strong>
+          <strong>Cart Is Empty</strong>
         )}
       </div>
-
       <div className="menu">
         <Link to="/cart/">
           <Button>Cart</Button>
